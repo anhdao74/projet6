@@ -1,0 +1,92 @@
+
+.page-header
+{
+ width :90%;
+  height:190px;
+  margin:auto;
+  text-align: center;  
+  color:white;
+  font-size: 60px; 
+}
+
+h1 {
+  width :90%;
+  height:170px;
+  margin:auto;
+  text-align: center;  
+  color:white;
+  font-size: 80px;
+  font-family: 'Palatino Linotype';
+}
+h2
+{
+  text-align: center; 
+  font-size: 50px;
+  font-family: 'Palatino Linotype';
+  
+}
+
+h3,h4,h5
+{
+  color: #6A0888;
+  font-family: 'Palatino Linotype';
+}
+
+p
+{
+  color: #110e3d;
+  text-align: justify;
+}
+
+.row {
+  background-color:white;   
+  border-radius: 10%;  
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.news {
+  background-color:white;   
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.image{
+    height: 150px;
+}
+
+.minview
+{
+  margin-bottom: 100px;
+}
+
+body
+{
+  background-image: url("background.jpg");
+  font-family: 'Palatino Linotype';
+}
+
+#main
+{
+  max-width:1280px;
+  min-height:100%;
+  margin:0 auto;
+  position:relative;
+}
+
+.footer
+{
+  bottom: 0; 
+  left: 0; 
+  right: 0;
+  background:#6A0888;
+  color: white;
+  width: 100%;
+  height:30px;
+}
+
+p.flash
+{
+  font-style: italic;
+  color:red;
+}

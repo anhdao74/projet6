@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8" />
+        <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+        <script src="bootstrap/js/jquery.js"></script>
+        <link href="framework/style.css" rel="stylesheet">
+        <script src="bootstrap/js/bootstrap.js" rel="stylesheet"></script>
+        <script type="text/javascript" src="tinymce/js/tinymce/tinymce.js"></script>
+        <script type="text/javascript">
+        tinyMCE.init({
+        	selector : 'textarea',
+            
+            language : "fr",
+            add_unload_trigger : false,
+            remove_linebreaks : false,
+            inline_styles : false,
+            convert_fonts_to_spans : false,
+            forced_root_nlock : false,
+            forced_br_newlines : true,
+            forced_p_newlines : false});
+        </script>
+        <script src="bootstrap/js/jquery.js"></script>
+        <title><?= $title ?></title>
+        
+    </head>
+        
+    <body>
+
+        <?php include $template . 'View.phtml'; ?>
+
+        <section class="footer col-sm-12">  
+            <footer>
+                <a class="admin" href="index.php?action=connexion"> Connexion admin du site </a>
+            <?php
+            
+            /*if ($logged==TRUE)
+            { ?>
+                <div class="col-sm-3">
+                <a class="admin" href="index.php?action=deconnexion"> Deconnexion </a>
+                </div>
+                <div class="col-sm-offset-7 col-sm-2">
+                <a class="admin" href="index.php?action=showAdmin"> Page admin </a>
+                </div>
+                
+            <?php }
+            
+            if ($logged==FALSE)
+            { ?>
+                <a class="admin" href="index.php?action=connexion"> Connexion admin du site </a>
+                
+            <?php }*/
+            ?>
+            </footer>
+        </section>
+    </body>
+
+</html>

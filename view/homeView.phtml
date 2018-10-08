@@ -1,0 +1,68 @@
+<?php
+    /*if ($flash==true)
+    {?> 
+        <div class="alert alert-success alert-dismissable col-lg-12">
+        <button type="button" class="close" data-dismiss="alert">x</button>
+        <?php 
+        $set = $req->showFlash();
+        ?>  
+        </div> 
+    <?php }*/
+?>
+
+<body>
+
+<div class="container">
+    <header class="page-header">
+        <h1>How she did</h1>
+    </header>
+    <section class="row">
+        <div class="col-sm-12">
+
+            <section class="col-sm-8">
+                <h2>La beauté pour les asiatiques</h2>
+
+                <h4>Qui je suis?</h4>
+                <p> Je suis Mai, je me suis rendu compte que pour nous les filles asiatiques, il y'avait très peu de blog ou de conseil beauté pour notre typage aisatique, qui vous le verrez à de nombreuses particularité et de a priori.</p>
+            </section>
+        </div>
+    </section>
+</div>
+    </br>        
+    </br>
+    </br>  
+<div class="container">
+    <section class="row1">
+        <div class="col-sm-12">
+                    <h5>Derniers articles beauté :</h5>
+
+                    <?php
+                    $req=$articles-> fetchAll();
+                    foreach ($req as $data)    
+                    {
+                    ?>
+                        <div class="col-sm-4 news" style="margin-right: 15px; margin-top: 15px; margin-bottom: 15px"/>
+                                <?php echo $data['title']; ?>
+                                le <?php echo $data['article_date_fr']; ?>
+                                </br> 
+                                <?php
+                                $res=$data['content'];
+                                $res=substr($res, 0, 60);
+                                echo $res;
+                                ?> 
+                                <img src="images/<?=$data['file']?>" class="image" alt="image">
+                                </br> 
+                                <em><a href="index.php?action=article&amp;id=<?= $data['id'] ?>">Lire la suite...</a></em>
+                                </br> 
+                                </br> 
+                                </br> 
+                        </div>
+                    <?php
+                    }
+                    $articles->closeCursor();
+                    ?>
+        </div>
+    </section>
+</div>
+
+</body>
