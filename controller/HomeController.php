@@ -18,13 +18,13 @@ class HomeController
     public function article()
     {
         $articleManager = new ArticleManager();
-        //$commentManager = new CommentManager();
+        $commentManager = new CommentManager();
         //$verif = new VerifyId();
         //$article = $verif-> getArticleId();
         
         $article = $articleManager->getArticle(strip_tags($_GET['id']));
         
-        //$comments = $commentManager->getComments(strip_tags($_GET['id']));
+        $comments = $commentManager->getComments(strip_tags($_GET['id']));
         //$connected= new UserSession();
         //$logged=$connected->isLogged();
         //$req = new FlashMessageSession();

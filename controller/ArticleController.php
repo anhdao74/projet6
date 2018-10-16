@@ -17,6 +17,7 @@ function addArticle()
             }            
         else 
             {
+            var_dump($_FILES);
                 $fileName = $_FILES['file']['name'];
                 $fileExtension = strrchr($fileName, ".");
                 $fileTmpName = $_FILES['file']['tmp_name'];
@@ -29,7 +30,7 @@ function addArticle()
                 } else {
                     echo 'Seul les fichiers jpg et jpeg sont autorisés';
                 }
-                $affectedLines= $articleManager->postArticle(strip_tags($_POST['title']), strip_tags($_POST['content']), $_FILES['file']['name']);
+                $affectedLines= $articleManager->postArticle(strip_tags($_POST['title']), $_POST['content'], $_FILES['file']['name'], $_FILES['file2']['name']);
                 //$req = new FlashMessageSession();
                 //$flash = $req->setFlash('Le chapitre a bien Ã©tÃ© ajoutÃ©');
             	header('Location: index.php?action=showAdmin');
@@ -65,13 +66,26 @@ function editArticle()
                 } else {
                     echo 'Seul les fichiers jpg et jpeg sont autorisés';
                 }
+                $fileName2 = $_FILES['file2']['name'];
+                $fileExtension2 = strrchr($fileName2, ".");
+                $fileTmpName2 = $_FILES['file2']['tmp_name'];
+                $fileDestination2 = 'images/'.$fileName2;
+                $autorisedExtension2 = array('.jpg', '.JPG', '.jpeg', '.JPEG');
+                if (in_array($fileExtension2, $autorisedExtension2)){
+                    if (move_uploaded_file($fileTmpName2, $fileDestination2)){
+                        echo 'Image envoyé avec succès';
+                    }
+                } else {
+                    echo 'Seul les fichiers jpg et jpeg sont autorisés';
+                }
                 $newtitle = strip_tags($_POST['newtitle']);
-                $newcontent = strip_tags($_POST['newcontent']);
+                $newcontent = $_POST['newcontent'];
                 $articleId = strip_tags($_POST['id']);
                 $newfile = $fileName;
+                $newfile2 = $fileName2;
                 $articleManager = new ArticleManager();
                 $article= $articleManager-> getArticle($articleId);
-                $editArticle=$articleManager->modifyArticle($articleId, $newtitle, $newcontent, $newfile);
+                $editArticle=$articleManager->modifyArticle($articleId, $newtitle, $newcontent, $newfile, $newfile2);
                 //$req = new FlashMessageSession();
                 //$message = $req->setFlash('Le chapitre a bien Ã©tÃ© modifiÃ©');
                 //$flash = $req->asMessage();

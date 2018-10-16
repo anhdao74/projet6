@@ -9,12 +9,17 @@
   font-size: 60px; 
 }
 
+.about{
+    background-color:black;  
+    color:white;
+}
+
 h1 {
   width :90%;
   height:170px;
   margin:auto;
   text-align: center;  
-  color:white;
+  color:black;
   font-size: 80px;
   font-family: 'Palatino Linotype';
 }
@@ -26,7 +31,7 @@ h2
   
 }
 
-h3,h4,h5
+h3,h5
 {
   color: #6A0888;
   font-family: 'Palatino Linotype';
@@ -38,6 +43,9 @@ p
   text-align: justify;
 }
 
+#commentContent p {
+   text-align: center;  
+}
 .row {
   background-color:white;   
   border-radius: 10%;  
@@ -52,7 +60,28 @@ p
 }
 
 .image{
+    height: 550px;
+    width: 450px;
+}
+
+.image1{
+    height: 450px;
+    width: 350px;
+}
+
+.image2{
+    height: 250px;
+    width: 250px;
+}
+
+.image3{
     height: 150px;
+    width: 150px;
+}
+
+.images{
+    height: 150px;
+    width: 150px;
 }
 
 .minview
@@ -62,7 +91,6 @@ p
 
 body
 {
-  background-image: url("background.jpg");
   font-family: 'Palatino Linotype';
 }
 
@@ -85,8 +113,7 @@ body
   height:30px;
 }
 
-p.flash
+.about1
 {
-  font-style: italic;
-  color:red;
+  color:white !important;
 }

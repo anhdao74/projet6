@@ -12,30 +12,91 @@
 <body>    
     <div class="container">
         <header class="page-header">
-            <h1>Billet simple pour l'Alaska</h1>
+            <h1>How she did</h1>
         </header>
 
         <section class="row">
 
         <div class="col-sm-12">
 
-        <p><a href ="index.php"> Retour ├а la liste des chapitres </a></p>
+        <p><a href ="index.php"> Retour ра la liste des articles </a></p>
 
         	<div class="row">
 
-                <section class="col-sm-offset-2 col-sm-8">
-
-            	   <h3>
-            	       <?php echo $article['title'] ?>
-            	       <em>le <?php echo $article['article_date_fr'] ?></em>
-            	   </h3>
-
-            	   <p><?php echo $article['content'] ?></p>
+                <section class=" col-sm-12 text-center">
+                    <div class="col-sm-12">
+                        <h3>
+                           <?php echo $article['title'] ?>
+                           <em>le <?php echo $article['article_date_fr'] ?></em>
+                        </h3>
+                        <?php 
+                        if($article['file']){
+                            echo '<img src="images/'.$article['file'].'" class="image width-100" alt="image" style="position:relative"/>';
+                        } 
+                        if($article['file2']){
+                            echo '<img src="images/'.$article['file2'].'" class="image2 width-100" alt="image2" style="position:absolute; top:300px; left:150px"/>';
+                        }?>
+                        <?php echo $article['content'] ?>
+                    </div>
                 </section>
             </div>
-
-    	
         </div>
         </section>
     </div>
+    
+    <div class="container text-center">
+        <h4 id = "showComments"> Voir les commentaires </h4>
+        <div class="wrap hidden" id="commentShowed">
+            <?php
+                    while ($data=$comments-> fetch())
+                {
+                ?>
+                    <div class="news"/>
+                        <h4>
+                        <?php echo $data['author'] ?>
+                        le <?= $data['creation_date_fr'] ?>
+                        </h4>
+
+                        
+                        <?php echo '<span class="text-center" id="commentContent">'.$data['content'].'</span>'?>
+                        
+                    </div>
+
+                    <form action="index.php?action=signaledComment&amp;id=<?= $data['id'] ?>" method='post'>
+                        <input type="hidden" name="id" value="<?=$article['id']?>"/> 
+                    <button class="btn btn-xs btn-warning" type="submit"><span class="glyphicon glyphicon-warning-sign"></span> Signaler</button>
+                    </form>
+
+                <?php
+                }
+                $comments->closeCursor();
+                ?>
+
+                        <h5> Ajouter un nouveau commentaire </h5>
+
+                        <form action="index.php?action=addComment&amp;id=<?= $data['id'] ?>" method='post'>
+
+                            <input type="hidden" name="id" value="<?=$article['id']?>"/>    
+
+                            <div>
+                                <label for="author">Votre pseudo</label><br />
+                                <input type="text" id="author" name="author">
+                            </div>
+
+                            <div>
+                                <label for="content">Texte</label><br />
+                                <textarea id="content" name="content"></textarea>
+                            </div>
+
+                            <div>
+                                <button class="btn btn-primary btn-success"><span class="glyphicon glyphicon-chevron-down"></span> Envoyer</button>
+                            </div>
+                        </form>
+        </div>
+    </div>
+    <script>
+        $("#showComments").click(function() {
+            $("#commentShowed").removeClass("hidden");
+        });
+    </script>
 </body>

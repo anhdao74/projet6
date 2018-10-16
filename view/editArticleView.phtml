@@ -43,7 +43,12 @@
                     <div>
                         <label for="file">Fichier (tous formats | max. 1 Mo) :</label><br />
                         <input type="hidden" name="MAX_FILE_SIZE" value="1048576" />
-                        <input type="file" name="file" id="mon_fichier" /><br />
+                        <input type="file" name="file" id="mon_fichier" value="<?php $article['file']?>" /><br />
+                    </div>
+                    <div>
+                        <label for="file">Fichier (tous formats | max. 1 Mo) :</label><br />
+                        <input type="hidden" name="MAX_FILE_SIZE" value="1048576" />
+                        <input type="file" name="file2" id="mon_fichier" /><br />
                     </div>
 
                     <div>

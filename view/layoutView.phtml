@@ -8,18 +8,59 @@
         <link href="framework/style.css" rel="stylesheet">
         <script src="bootstrap/js/bootstrap.js" rel="stylesheet"></script>
         <script type="text/javascript" src="tinymce/js/tinymce/tinymce.js"></script>
+        <script src="http://code.jquery.com/jquery.js"></script>
         <script type="text/javascript">
-        tinyMCE.init({
-        	selector : 'textarea',
-            
-            language : "fr",
-            add_unload_trigger : false,
-            remove_linebreaks : false,
-            inline_styles : false,
-            convert_fonts_to_spans : false,
-            forced_root_nlock : false,
-            forced_br_newlines : true,
-            forced_p_newlines : false});
+            tinyMCE.init({
+                    selector : 'textarea',
+                    plugins : 'code image',
+                    toolbar : 'indo redo | image code',
+                    image_class_list: [
+                        {title: 'None', value: 'images'}
+                      ],
+                    images_upload_url: 'upload.php',
+                    images_upload_handler: function (blobInfo, success, failure) {
+                            var xhr, formData;
+
+                            xhr = new XMLHttpRequest();
+                            xhr.withCredentials = true;
+                            xhr.open('POST', 'upload.php');
+
+                            xhr.onload = function() {
+                                var json;
+
+                                if (xhr.status !== 200) {
+                                    failure('HTTP Error: ' + xhr.status);
+                                    return;
+                                }
+
+                                json = JSON.parse(xhr.responseText);
+
+                                if (!json || typeof json.location !== 'string') {
+                                    failure('Invalid JSON: ' + xhr.responseText);
+                                    return;
+                                }
+
+                                success(json.location);
+                            };
+
+                            formData = new FormData();
+                            formData.append('file', blobInfo.blob(), blobInfo.filename());
+
+                            xhr.send(formData);
+                        },
+                    images_dataimg_filter: function(img) {
+                        return img.hasAttribute('internal-blob');
+                    },
+
+                language : "fr",
+                add_unload_trigger : false,
+                remove_linebreaks : false,
+                inline_styles : false,
+                convert_fonts_to_spans : false,
+                forced_root_nlock : false,
+                forced_br_newlines : true,
+                forced_p_newlines : true
+            });
         </script>
         <script src="bootstrap/js/jquery.js"></script>
         <title><?= $title ?></title>
