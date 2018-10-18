@@ -37,6 +37,11 @@ h3,h5
   font-family: 'Palatino Linotype';
 }
 
+a {
+    color:black;
+    font-size: 15px;
+}
+
 p
 {
   color: #110e3d;
@@ -46,6 +51,15 @@ p
 #commentContent p {
    text-align: center;  
 }
+
+.blog-nav{
+   position: absolute;
+   writing-mode: vertical-rl;
+   text-orientation: mixed;
+   white-space: nowrap;
+   top: 55px;
+}
+
 .row {
   background-color:white;   
   border-radius: 10%;  
