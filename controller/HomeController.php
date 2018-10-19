@@ -34,4 +34,21 @@ class HomeController
         
         require('view/layoutView.phtml');
     }
+    public function articles()
+    {
+        $articleManager = new ArticleManager(); 
+        $articles = $articleManager->getArticles(); 
+        
+        $template = 'articles';
+        $title = 'Page des articles';
+        
+        require('view/layoutView.phtml');
+    }
+    public function maTrousse()
+    {
+        $template = 'maTrousse';
+        $title = 'Page de ma trousse';
+        
+        require('view/layoutView.phtml');
+    }
 }

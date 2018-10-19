@@ -1,0 +1,58 @@
+<body>
+    <header class="page-header">
+        <h1>How she did</h1>
+    </header>
+
+<div class="col-sm-12 container">
+        <section class="row1">
+            <div class="col-sm-12">
+                <?php
+                $datas1=$articles-> fetchAll();
+                foreach ($datas1 as $data)    
+                {
+                ?>
+                    <div class="col-sm-3 news text-center" style="margin-right: 15px; margin-top: 15px; margin-bottom: 15px"/>
+                        <?php
+                        if($data['file']){
+                            echo '<img src="images/'.$data['file'].'" class="image1 width-100" alt="image" style="position:relative"/>';
+                        } 
+                        ?> 
+                        <strong>
+                        <?php
+                        echo $data['title']; ?>
+                        le <?php echo $data['article_date_fr']; ?>
+                        </strong>
+                        </br>
+                        <?php $res=$data['content'];
+                        $res=substr($res, 0, 40);
+                        echo $res; ?>
+                        <a href="index.php?action=article&amp;id=<?= $data['id'] ?>">Lire la suite...</a>
+                    </div>
+                <?php
+                }
+                $articles->closeCursor();
+                ?>
+            </div>
+        </section>
+    </div>
+    
+    <div class="col-sm-12 about">
+        <section class="row1">
+            <div class="col-sm-12">
+
+                <section class="col-sm-12">
+                    <h2>La beauté pour les asiatiques</h2>
+
+                    <h4>Qui je suis?</h4>
+                    <div class="col-sm-10">
+                        <p class="about1"> Je suis Mai, je me suis rendu compte que pour nous les filles asiatiques, il y'avait très peu de blog ou de conseil beauté pour notre typage aisatique, qui vous le verrez à de nombreuses particularité et de a priori.</p>
+                    </div>
+                    <div class="col-sm-2" style="position:absolute; top:7px; right:10px">
+                        <img src="images/004.jpg" class="image3 width-100" alt="image" style="position:relative"/>
+                    </div>
+                </section>
+            </div>
+        </section>
+    </div>
+    </br>
+</body>

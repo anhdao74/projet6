@@ -20,6 +20,18 @@ class Routeur
                 
                 return [$controller, 'article'];
             }
+            elseif ($_GET['action'] == 'articles') 
+            {
+                $controller = new HomeController;
+                
+                return [$controller, 'articles'];
+            }
+            elseif ($_GET['action'] == 'maTrousse') 
+            {
+                $controller = new HomeController;
+                
+                return [$controller, 'maTrousse'];
+            }
             elseif ($_GET['action'] == 'connexion') 
             {
                 $connexionController = new ConnexionController;
