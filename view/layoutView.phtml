@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
     <head>
-        <meta charset="utf-8" />
+        <meta charset="UTF-8" />
         <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
         <script src="bootstrap/js/jquery.js"></script>
         <link href="framework/style.css" rel="stylesheet">
@@ -75,7 +75,7 @@
                 <div class="collapse navbar-collapse" id="navbarNav" style="padding:0; padding-top:15px">
                     <a class="nav-link" href="index.php">Accueil &nbsp &nbsp <span class="sr-only">(current)</span></a>
                     <a class="nav-link" href="index.php?action=articles">Articles &nbsp &nbsp</a>
-                    <a class="nav-link" href="index.php?action=maTrousse">Ma trousse &nbsp &nbsp &nbsp</a>
+                    <a class="nav-link" href="index.php?action=articlesTrousse">Ma trousse &nbsp &nbsp &nbsp</a>
                     <a class="nav-link" href="#"><span class="glyphicon glyphicon-search"></a>
                 </div>
             </nav>
@@ -93,15 +93,15 @@
                 </button>
                 <h3>Rejoindre Mai</h3>
                 <div class="socials">
-                    <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/login?lang=fr" class="btn-icon" data-placement="left">
+                    <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/login?lang=fr" class="btn btn-twitter" data-placement="left">
                         <i class="fa fa-twitter"></i>
                     </a>
                     &nbsp &nbsp
-                    <a data-original-title="Facebook" rel="tooltip"  href="https://www.facebook.com/" class="btn-icon" data-placement="left">
+                    <a data-original-title="Facebook" rel="tooltip"  href="https://www.facebook.com/" class="btn btn-facebook" data-placement="left">
                             <i class="fa fa-facebook"></i>
                     </a>
                     &nbsp &nbsp
-                    <a data-original-title="Instagram" rel="tooltip"  href="https://plus.google.com/" class="btn-icon" data-placement="left">
+                    <a data-original-title="Instagram" rel="tooltip"  href="https://plus.google.com/" class="btn btn-instagram" data-placement="left">
                             <i class="fa fa-instagram"></i>
                     </a>
                 </div> 
@@ -117,7 +117,8 @@
 
                     <h4>Qui je suis?</h4>
                     <div class="col-sm-10">
-                        <p class="about1"> Je suis Mai, je me suis rendu compte que pour nous les filles asiatiques, il y'avait très peu de blog ou de conseil beauté pour notre typage aisatique, qui vous le verrez à de nombreuses particularité et de a priori.</p>
+                        <p class="about1"> Je suis Mai, je me suis rendu compte que pour nous les filles asiatiques, il y'avait très peu de blog ou de conseil beauté pour notre typage aisatique, qui vous le verrez à de nombreuses particularité et de a priori.
+                        Je suis super contente de pouvoir partager avec vous mes expériences et essai, et j'espère vous guidera au mieux dans ce vaste monde de la beauté!</p>
                     </div>
                     <div class="col-sm-2" style="position:absolute; top:7px; right:10px">
                         <img src="images/004.jpg" class="image3 width-100" alt="image" style="position:relative"/>
@@ -130,10 +131,9 @@
 
         <section class="footer col-sm-12">  
             <footer>
-                <a class="admin" href="index.php?action=connexion"> Connexion admin du site </a>
             <?php
             
-            /*if ($logged==TRUE)
+            if ($logged==TRUE)
             { ?>
                 <div class="col-sm-3">
                 <a class="admin" href="index.php?action=deconnexion"> Deconnexion </a>
@@ -148,7 +148,7 @@
             { ?>
                 <a class="admin" href="index.php?action=connexion"> Connexion admin du site </a>
                 
-            <?php }*/
+            <?php }
             ?>
             </footer>
         </section>

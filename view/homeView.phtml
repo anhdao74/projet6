@@ -1,5 +1,5 @@
 <?php
-    /*if ($flash==true)
+    if ($flash==true)
     {?> 
         <div class="alert alert-success alert-dismissable col-lg-12">
         <button type="button" class="close" data-dismiss="alert">x</button>
@@ -7,7 +7,7 @@
         $set = $req->showFlash();
         ?>  
         </div> 
-    <?php }*/
+    <?php }
 ?>
 
 <body>
@@ -37,7 +37,6 @@
                             <strong>
                             <?php
                             echo $data['title']; ?>
-                            le <?php echo $data['article_date_fr']; ?>
                             </strong>
                             </br>
                             <?php $res=$data['content'];
@@ -67,10 +66,10 @@
                             echo '<img src="images/'.$data['file'].'" class="image1 width-100" alt="image" style="position:relative"/>';
                         } 
                         ?> 
+                        </br>
                         <strong>
                         <?php
                         echo $data['title']; ?>
-                        le <?php echo $data['article_date_fr']; ?>
                         </strong>
                         </br>
                         <?php $res=$data['content'];
@@ -85,24 +84,38 @@
             </div>
         </section>
     </div>
-    
-    <div class="col-sm-12 about">
+    </br>
+    <div class="col-sm-12 container">
         <section class="row1">
             <div class="col-sm-12">
-
-                <section class="col-sm-12">
-                    <h2>La beauté pour les asiatiques</h2>
-
-                    <h4>Qui je suis?</h4>
-                    <div class="col-sm-10">
-                        <p class="about1"> Je suis Mai, je me suis rendu compte que pour nous les filles asiatiques, il y'avait très peu de blog ou de conseil beauté pour notre typage aisatique, qui vous le verrez à de nombreuses particularité et de a priori.</p>
+                 <?php
+                $req1=$articlesTrousse-> fetchAll();
+                $req12 = array_slice($req1, 0, 3);
+                foreach ($req12 as $datas)    
+                {
+                ?>
+                    <div class="col-sm-3 news text-center" style="margin-right: 15px; margin-top: 15px; margin-bottom: 15px"/>
+                        <?php
+                        if($datas['file_article_trousse']){
+                            echo '<img src="images/'.$datas['file_article_trousse'].'" class="image3 width-100" alt="image" style="position:relative"/>';
+                        } 
+                        ?> 
+                        </br>
+                        <strong>
+                        <?php
+                        echo $datas['title_article_trousse']; ?>
+                        </strong>
+                        </br>
+                        <?php $res=$datas['content_article_trousse'];
+                        $res=substr($res, 0, 40);
+                        echo $res; ?>
+                        <a href="index.php?action=articleTrousse&amp;id=<?= $datas['id_article_trousse'] ?>">Lire la suite...</a>
                     </div>
-                    <div class="col-sm-2" style="position:absolute; top:7px; right:10px">
-                        <img src="images/004.jpg" class="image3 width-100" alt="image" style="position:relative"/>
-                    </div>
-                </section>
+                <?php
+                }
+                $articlesTrousse->closeCursor();
+                ?>
             </div>
         </section>
     </div>
-    </br>
 </body>

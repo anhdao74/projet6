@@ -1,0 +1,54 @@
+<?php
+if ($flash==true)
+{?> 
+    <div class="alert alert-success alert-dismissable col-lg-12">
+    <button type="button" class="close" data-dismiss="alert">x</button>
+    <?php 
+    $set = $req->showFlash();
+    ?>  
+    </div> 
+<?php }
+?>
+
+<body>
+    <div class="container">
+        <header class="page-header">
+            <h1>How she did</h1>
+        </header>
+
+        <div class="minview col-sm-12">
+            <section class="col-sm-12"> 
+                <p><a href ="index.php?action=showAdmin"> Retour à la liste des articles </a></p>
+
+                <h3>
+                <em>le <?php echo $articleTrousse['article_date_fr'] ?></em>
+                </h3>
+
+                <h4> Modifier l'article </h4>
+
+                <form action='index.php?action=editArticleTrousse' method='post'enctype='multipart/form-data'>
+
+                    <input type="hidden" name="id_article_trousse" value="<?php echo $articleTrousse['id_article_trousse']?>"/>  
+                    <div>
+                        <label for="newtitle">Titre de l'article</label><br />
+                        <input type="text" id="title_article_trousse" name="newtitle" value="<?php echo $articleTrousse['title_article_trousse'] ?>"/>
+                    </div>
+
+                    <div>
+                        <label for="newcontent">Texte</label><br />
+                        <textarea id="content_article_trousse" name="newcontent" ><?php echo $articleTrousse['content_article_trousse'] ?></textarea>
+                    </div>
+
+                    <div>
+                        <label for="file">Fichier (tous formats | max. 1 Mo) :</label><br />
+                        <input type="hidden" name="MAX_FILE_SIZE" value="1048576" />
+                        <input type="file" name="file" id="mon_fichier" value="<?php $articleTrousse['file_article_trousse']?>" /><br />
+                    </div>
+                    <div>
+                        <button class="btn btn-primary btn-primary"><span class="glyphicon glyphicon-floppy-saved"></span> Enregistrer</button>
+                    </div>
+                </form>
+            </section>
+        </div>
+    </div>
+</body>

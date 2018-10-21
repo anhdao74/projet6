@@ -9,9 +9,9 @@ function addArticle()
             {
                 $verif = new VerifyId();
                 $article = $verif-> getAddArticleId(); 
-                //$req = new FlashMessageSession();
-                //$flash = $req->asMessage();
-                //$flash = $req->setFlash('Vous n\'avez pas rempli tous les champs');
+                $req = new FlashMessageSession();
+                $flash = $req->asMessage();
+                $flash = $req->setFlash('Vous n\'avez pas rempli tous les champs');
                 header('Location: index.php?action=showAdmin');
                 exit();  
             }            
@@ -31,8 +31,8 @@ function addArticle()
                     echo 'Seul les fichiers jpg et jpeg sont autoris�s';
                 }
                 $affectedLines= $articleManager->postArticle(strip_tags($_POST['title']), $_POST['content'], $_FILES['file']['name'], $_FILES['file2']['name']);
-                //$req = new FlashMessageSession();
-                //$flash = $req->setFlash('Le chapitre a bien été ajouté');
+                $req = new FlashMessageSession();
+                $flash = $req->setFlash('Le chapitre a bien été ajouté');
             	header('Location: index.php?action=showAdmin');
                	exit();
             }    
@@ -40,9 +40,9 @@ function addArticle()
     
 function editArticle()
     {
-        //$userSession = new UserSession();
-        //$logged = $userSession->isLogged();
-        /*if ($logged===False)
+        $userSession = new UserSession();
+        $logged = $userSession->isLogged();
+        if ($logged===False)
         {
             $template = 'connexion';
             $title = 'Page de connexion';
@@ -50,7 +50,7 @@ function editArticle()
             require('view/layoutView.phtml'); 
         }
         else
-        {*/
+        {
          if (isset($_POST['newtitle']) && isset($_POST['newcontent']))
             
             {
@@ -86,40 +86,40 @@ function editArticle()
                 $articleManager = new ArticleManager();
                 $article= $articleManager-> getArticle($articleId);
                 $editArticle=$articleManager->modifyArticle($articleId, $newtitle, $newcontent, $newfile, $newfile2);
-                //$req = new FlashMessageSession();
-                //$message = $req->setFlash('Le chapitre a bien été modifié');
-                //$flash = $req->asMessage();
+                $req = new FlashMessageSession();
+                $message = $req->setFlash('Le chapitre a bien été modifié');
+                $flash = $req->asMessage();
                 header('Location: index.php?action=showAdmin');
                 exit();
             }  
             else
             {
-                //$verif = new VerifyId();
-                //$article = $verif-> getArticleId();
+                $verif = new VerifyId();
+                $article = $verif-> getArticleId();
                 $articleManager = new ArticleManager();
                 $article = $articleManager->getArticle(strip_tags($_GET['id']));
                 
-                //$req = new FlashMessageSession();
-                //$message = $req->setFlash('Votre chapitre est prêt a être modifié');
-                //$flash = $req->asMessage();
+                $req = new FlashMessageSession();
+                $message = $req->setFlash('Votre chapitre est prêt a être modifié');
+                $flash = $req->asMessage();
                 
                 $template = 'editArticle';
                 $title = 'Page modification chapitre';
         
                 require('view/layoutView.phtml'); 
             }
-        //} 
+        } 
     }
 function removeArticle()
     {
-        //$verif = new VerifyId();
-        //$article = $verif-> getArticleId();
+        $verif = new VerifyId();
+        $article = $verif-> getArticleId();
         $articleManager = new ArticleManager();
         $articles=$articleManager->getArticles();
         $removeLine=$articleManager->cancelArticle(strip_tags($_GET['id']));
-        //$req = new FlashMessageSession();
-        //$message = $req->setFlash('Le chapitre a bien été supprimé');
-        //$flash = $req->asMessage();
+        $req = new FlashMessageSession();
+        $message = $req->setFlash('Le chapitre a bien été supprimé');
+        $flash = $req->asMessage();
         header('Location: index.php?action=showAdmin');
         exit();
     }

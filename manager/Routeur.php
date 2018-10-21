@@ -26,11 +26,23 @@ class Routeur
                 
                 return [$controller, 'articles'];
             }
-            elseif ($_GET['action'] == 'maTrousse') 
+            elseif ($_GET['action'] == 'articleTrousse') 
             {
                 $controller = new HomeController;
                 
-                return [$controller, 'maTrousse'];
+                return [$controller, 'articleTrousse'];
+            }
+            elseif ($_GET['action'] == 'articlesTrousse') 
+            {
+                $controller = new HomeController;
+                
+                return [$controller, 'articlesTrousse'];
+            }
+            elseif ($_GET['action'] == 'editArticleTrousse') 
+            {
+                $articleTrousseController = new ArticlesTrousseController;
+                return [$articleTrousseController, 'editArticleTrousse'];
+                
             }
             elseif ($_GET['action'] == 'connexion') 
             {
@@ -64,8 +76,11 @@ class Routeur
                 $commentController = new CommentController;
                 return [$commentController, 'addComment'];
             }
-             
-            
+            elseif ($_GET['action'] == 'addCommentTrousse') 
+            {
+                $commentTrousseController = new CommentTrousseController;
+                return [$commentTrousseController, 'addCommentTrousse'];
+            }
             elseif ($_GET['action'] == 'editArticle') 
             {
                 $articleController = new ArticleController;
@@ -89,6 +104,12 @@ class Routeur
                 $commentManager = new CommentManager;
                 $commentController = new CommentController;
                 return [$commentController, 'signaledComment'];
+            }
+            elseif ($_GET['action'] == 'removeArticleTrousse') 
+            {
+                $articleTrousseManager = new ArticleTrousseManager;
+                $articleTrousseController = new ArticlesTrousseController;
+                return [$articleTrousseController, 'removeArticleTrousse'];
             }
         }
         else 

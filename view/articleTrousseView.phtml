@@ -9,6 +9,7 @@ if ($flash==true)
     </div> 
 <?php }
 ?>
+<body>    
     <div class="container">
         <header class="page-header">
             <h1>How she did</h1>
@@ -18,24 +19,22 @@ if ($flash==true)
 
         <div class="col-sm-12">
 
-        <p><a href ="index.php"> Retour à  la liste des articles </a></p>
+        <p><a href ="index.php?action=articlesTrousse"> Retour à la liste des articles de ma trousse </a></p>
 
         	<div class="row">
 
                 <section class=" col-sm-12 text-center">
                     <div class="col-sm-12">
                         <h3>
-                           <?php echo $article['title'] ?>
-                           <em>le <?php echo $article['article_date_fr'] ?></em>
+                           <?php echo $articleTrousse['title_article_trousse'] ?>
+                           <em>le <?php echo $articleTrousse['article_date_fr'] ?></em>
                         </h3>
                         <?php 
-                        if($article['file']){
-                            echo '<img src="images/'.$article['file'].'" class="image width-100" alt="image" style="position:relative"/>';
+                        if($articleTrousse['file_article_trousse']){
+                            echo '<img src="images/'.$articleTrousse['file_article_trousse'].'" class="image3 width-100" alt="image" style="position:relative"/>';
                         } 
-                        if($article['file2']){
-                            echo '<img src="images/'.$article['file2'].'" class="image2 width-100" alt="image2" style="position:absolute; top:300px; left:150px"/>';
-                        }?>
-                        <?php echo $article['content'] ?>
+                        ?>
+                        <?php echo $articleTrousse['content_article_trousse'] ?>
                     </div>
                 </section>
             </div>
@@ -52,17 +51,17 @@ if ($flash==true)
                 ?>
                     <div class="news"/>
                         <h4>
-                        <?php echo $data['author'] ?>
+                        <?php echo $data['author_trousse'] ?>
                         le <?= $data['creation_date_fr'] ?>
                         </h4>
 
                         
-                        <?php echo '<span class="text-center" id="commentContent">'.$data['content'].'</span>'?>
+                        <?php echo '<span class="text-center" id="commentContent">'.$data['content_trousse'].'</span>'?>
                         
                     </div>
 
-                    <form action="index.php?action=signaledComment&amp;id=<?= $data['id'] ?>" method='post'>
-                        <input type="hidden" name="id" value="<?=$article['id']?>"/> 
+                    <form action="index.php?action=signaledComment&amp;id=<?= $data['id_trousse'] ?>" method='post'>
+                        <input type="hidden" name="id" value="<?=$articleTrousse['id_article_trousse']?>"/> 
                     <button class="btn btn-xs btn-warning" type="submit"><span class="glyphicon glyphicon-warning-sign"></span> Signaler</button>
                     </form>
 
@@ -73,9 +72,9 @@ if ($flash==true)
 
                         <h5> Ajouter un nouveau commentaire </h5>
 
-                        <form action="index.php?action=addComment&amp;id=<?= $data['id'] ?>" method='post'>
+                        <form action="index.php?action=addCommentTrousse&amp;id=<?= $data['id_trousse'] ?>" method='post'>
 
-                            <input type="hidden" name="id" value="<?=$article['id']?>"/>    
+                            <input type="hidden" name="id" value="<?=$articleTrousse['id_article_trousse']?>"/>    
 
                             <div>
                                 <label for="author">Votre pseudo</label><br />
@@ -149,3 +148,4 @@ if ($flash==true)
             $("#commentShowed").removeClass("hidden");
         });
     </script>
+</body>

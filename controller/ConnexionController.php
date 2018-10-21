@@ -4,11 +4,11 @@ class ConnexionController
 {
     function connexion()
     {
-       // $connected= new UserSession();
-        //$logged=$connected->isLogged();
-        //$req= new FlashMessageSession();
-        //$message = $req->setFlash('Entrez votre identifiant et votre mot de passe');
-        //$flash = $req->asMessage();
+        $connected= new UserSession();
+        $logged=$connected->isLogged();
+        $req= new FlashMessageSession();
+        $message = $req->setFlash('Entrez votre identifiant et votre mot de passe');
+        $flash = $req->asMessage();
         
         require('view/connexionView.phtml');
     }
@@ -28,11 +28,11 @@ class ConnexionController
         
         if (!$user)  
         {
-            /*$connected= new UserSession();
+            $connected= new UserSession();
             $logged=$connected->isLogged();
             $_SESSION['user'] = FALSE;
             $req = new FlashMessageSession();
-            $flash = $req->setFlash('Mot de passe ou identifiant erroné, vérifiez');*/
+            $flash = $req->setFlash('Mot de passe ou identifiant erroné, vérifiez');
             $template = 'connexion';
             $title = 'Page de connexion';
         
@@ -41,15 +41,17 @@ class ConnexionController
         
         else 
         {  
-        /*$user = new UserSession();
+        $user = new UserSession();
         $sign = $user->signIn();
         $logged=$user->isLogged();
         
         $req = new FlashMessageSession();
         $message = $req->setFlash('Vous êtes connecté');
-        $flash = $req->asMessage();*/
+        $flash = $req->asMessage();
         $articleManager = new ArticleManager();
         $articles = $articleManager->getArticles();
+        $articleTrousseManager = new ArticleTrousseManager(); 
+        $articlesTrousse = $articleTrousseManager->getArticlesTrousse(); 
         
         $template = 'admin';
         $title = 'Page administration';

@@ -5,10 +5,12 @@ class HomeController
     {
         $articleManager = new ArticleManager(); 
         $articles = $articleManager->getArticles(); 
-        //$connect= new UserSession();
-        //$logged=$connect->isLogged();
-        //$req = new FlashMessageSession();
-        //$flash = $req->asMessage();
+        $articleTrousseManager = new ArticleTrousseManager(); 
+        $articlesTrousse = $articleTrousseManager->getArticlesTrousse(); 
+        $connect= new UserSession();
+        $logged=$connect->isLogged();
+        $req = new FlashMessageSession();
+        $flash = $req->asMessage();
         $template = 'home';
         $title = 'Page Accueil';
         
@@ -19,16 +21,16 @@ class HomeController
     {
         $articleManager = new ArticleManager();
         $commentManager = new CommentManager();
-        //$verif = new VerifyId();
-        //$article = $verif-> getArticleId();
+        $verif = new VerifyId();
+        $article = $verif-> getArticleId();
         
         $article = $articleManager->getArticle(strip_tags($_GET['id']));
         
         $comments = $commentManager->getComments(strip_tags($_GET['id']));
-        //$connected= new UserSession();
-        //$logged=$connected->isLogged();
-        //$req = new FlashMessageSession();
-        //$flash = $req->asMessage();
+        $connected= new UserSession();
+        $logged=$connected->isLogged();
+        $req = new FlashMessageSession();
+        $flash = $req->asMessage();
         $template = 'article';
         $title = 'Page article';
         
@@ -39,15 +41,43 @@ class HomeController
         $articleManager = new ArticleManager(); 
         $articles = $articleManager->getArticles(); 
         
+        $connected= new UserSession();
+        $logged=$connected->isLogged();
+        
         $template = 'articles';
         $title = 'Page des articles';
         
         require('view/layoutView.phtml');
     }
-    public function maTrousse()
+    public function articleTrousse()
     {
-        $template = 'maTrousse';
-        $title = 'Page de ma trousse';
+        $articleTrousseManager = new ArticleTrousseManager();
+        $commentTrousseManager = new CommentTrousseManager();
+        $verif = new VerifyId();
+        $articleTrousse = $verif-> getArticleIdTrousse();
+        
+        $articleTrousse = $articleTrousseManager->getArticleTrousse(strip_tags($_GET['id']));
+        
+        $comments = $commentTrousseManager->getComments(strip_tags($_GET['id']));
+        $connected= new UserSession();
+        $logged=$connected->isLogged();
+        $req = new FlashMessageSession();
+        $flash = $req->asMessage();
+        $template = 'articleTrousse';
+        $title = 'Page trousse des articles';
+        
+        require('view/layoutView.phtml');
+    }
+    public function articlesTrousse()
+    {
+        $articleTrousseManager = new ArticleTrousseManager(); 
+        $articlesTrousse = $articleTrousseManager->getArticlesTrousse(); 
+        
+        $connected= new UserSession();
+        $logged=$connected->isLogged();
+        
+        $template = 'articlesTrousse';
+        $title = 'Page trousse';
         
         require('view/layoutView.phtml');
     }
