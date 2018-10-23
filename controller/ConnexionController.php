@@ -51,7 +51,8 @@ class ConnexionController
         $articleManager = new ArticleManager();
         $articles = $articleManager->getArticles();
         $articleTrousseManager = new ArticleTrousseManager(); 
-        $articlesTrousse = $articleTrousseManager->getArticlesTrousse(); 
+        $articlesTrousseSoinVisage = $articleTrousseManager->getArticlesTrousse(1); 
+        $articlesTrousseSoinCorp = $articleTrousseManager->getArticlesTrousse(2); 
         
         $template = 'admin';
         $title = 'Page administration';

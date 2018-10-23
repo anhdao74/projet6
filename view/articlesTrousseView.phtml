@@ -3,38 +3,86 @@
         <h1>How she did</h1>
     </header>
 
-<div class="col-sm-11 container">
-        <section class="row1">
-            <div class="col-sm-12">
+    <ul class="nav nav-pills col-sm-11">
+        <li class="active"><a data-toggle="pill" href="#soin_visage" id="visage">Soin visage</a></li>
+        <li><a data-toggle="pill" href="#soin_corp" id="corp">Soin corp</a></li>
+        <li><a href="#">Make-up teint</a></li>
+        <li><a href="#">Make-up yeux</a></li>
+        <li><a href="#">Make-up levre</a></li>
+    </ul>
+<div class="pill-content col-sm-11">  
+    <div id="soin_visage" class="col-sm-12 pill-pane fade in active text-center" style="margin-right: 15px; margin-top: 15px; margin-bottom: 15px">
+    <?php
+    $datas1=$articlesTrousseSoinVisage-> fetchAll();
+    foreach ($datas1 as $data)    
+    { ?>
+        <div class="col-sm-12 text-center" style="margin-right: 15px; margin-top: 15px; margin-bottom: 15px">
+            <div class="col-sm-2">
                 <?php
-                $datas1=$articlesTrousse-> fetchAll();
-                foreach ($datas1 as $data)    
-                {
-                ?>
-                    <div class="col-sm-3 news text-center" style="margin-right: 15px; margin-top: 15px; margin-bottom: 15px"/>
-                        <?php
-                        if($data['file_article_trousse']){
-                            echo '<img src="images/'.$data['file_article_trousse'].'" class="image1 width-100" alt="image" style="position:relative"/>';
-                        } 
-                        ?> 
-                        </br>
-                        <strong>
-                        <?php
-                        echo $data['title_article_trousse']; ?>
-                        </strong>
-                        </br>
-                        <?php $res=$data['content_article_trousse'];
-                        $res=substr($res, 0, 40);
-                        echo $res; ?>
-                        <a href="index.php?action=articleTrousse&amp;id=<?= $data['id_article_trousse'] ?>">Lire la suite...</a>
-                    </div>
-                <?php
-                }
-                $articlesTrousse->closeCursor();
-                ?>
+                if($data['file_article_trousse']){
+                    echo '<img src="images/'.$data['file_article_trousse'].'" class="image3 width-100" alt="image" style="position:relative"/>';
+                } 
+                ?> 
+                </br>
             </div>
-        </section>
+            <div class="col-sm-9">
+                <strong>
+                <span class="pull-left">
+                    <?php
+                    echo $data['title_article_trousse']; ?>
+                </span>
+                </strong>
+                </br>
+                <?php $res=$data['content_article_trousse'];
+                $res=substr($res, 0, 40);
+                echo $res; ?>
+                <a href="index.php?action=articleTrousse&amp;id=<?= $data['id_article_trousse'] ?>">Lire la suite...</a>
+            </div>        
+        </div>
+    <?php }
+    $articlesTrousseSoinVisage->closeCursor(); ?>
     </div>
     
+    <div id="soin_corp" class="col-sm-12 pill-pane fade text-center" style="margin-right: 15px; margin-top: 15px; margin-bottom: 15px">
+    <?php
+    $articlesSoinCorp=$articlesTrousseSoinCorp-> fetchAll();
+    foreach ($articlesSoinCorp as $data1)    
+    { ?>
+        <div class="col-sm-12 text-center" style="margin-right: 15px; margin-top: 15px; margin-bottom: 15px">
+            <div class="col-sm-2">
+                <?php
+                if($data1['file_article_trousse']){
+                    echo '<img src="images/'.$data1['file_article_trousse'].'" class="image3 width-100" alt="image" style="position:relative"/>';
+                } 
+                ?> 
+                </br>
+            </div>
+            <div class="col-sm-9">
+                <strong>
+                <span class="pull-left">
+                    <?php
+                    echo $data1['title_article_trousse']; ?>
+                </span>
+                </strong>
+                </br>
+                <?php $res=$data1['content_article_trousse'];
+                $res1=substr($res, 0, 40);
+                echo $res1; ?>
+                <a href="index.php?action=articleTrousse&amp;id=<?= $data1['id_article_trousse'] ?>">Lire la suite...</a>
+            </div>        
+        </div>
+    <?php }
+    $articlesTrousseSoinCorp->closeCursor();
+    ?>
+    </div> 
+ </div>   
     </br>
+    <script>
+            $("#corp").click(function() {
+                $("#soin_visage").addClass("hidden");
+            });
+            $("#visage").click(function() {
+                $("#soin_visage").removeClass("hidden");
+            });
+        </script>
 </body>

@@ -71,7 +71,8 @@ class HomeController
     public function articlesTrousse()
     {
         $articleTrousseManager = new ArticleTrousseManager(); 
-        $articlesTrousse = $articleTrousseManager->getArticlesTrousse(); 
+        $articlesTrousseSoinVisage = $articleTrousseManager->getArticlesTrousse(1); 
+        $articlesTrousseSoinCorp = $articleTrousseManager->getArticlesTrousse(2); 
         
         $connected= new UserSession();
         $logged=$connected->isLogged();

@@ -2,9 +2,9 @@
 
 class ArticleTrousseManager extends Manager {
 
-    public function getArticlesTrousse() {
-        $req = $this->pdo->query('SELECT id_article_trousse, title_article_trousse , content_article_trousse , file_article_trousse, DATE_FORMAT(date_article_trousse, \'%d/%m/%Y à %Hh%i\') AS article_date_fr FROM trousse ORDER BY id_article_trousse');
-
+    public function getArticlesTrousse($typeArticle) {
+        $req = $this->pdo->prepare('SELECT id_article_trousse, title_article_trousse , content_article_trousse , file_article_trousse, DATE_FORMAT(date_article_trousse, \'%d/%m/%Y à %Hh%i\') AS article_date_fr, type_article FROM trousse WHERE type_article=?');
+        $req->execute(array($typeArticle));
         return $req;
     }
 
