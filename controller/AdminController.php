@@ -7,7 +7,11 @@ class AdminController
         $articleManager = new ArticleManager(); 
         $articles = $articleManager->getArticles(); 
         $articleTrousseManager = new ArticleTrousseManager(); 
-        $articlesTrousse = $articleTrousseManager->getArticlesTrousse(); 
+        $articlesTrousseSoinVisage = $articleTrousseManager->getArticlesTrousse(1); 
+        $articlesTrousseSoinCorp = $articleTrousseManager->getArticlesTrousse(2);
+        $articlesTrousseMakeUpYeux = $articleTrousseManager->getArticlesTrousse(3); 
+        $articlesTrousseMakeUpLevre = $articleTrousseManager->getArticlesTrousse(4); 
+        $articlesTrousseMakeUpTeint = $articleTrousseManager->getArticlesTrousse(5); 
         
         $connected= new UserSession();
         $logged=$connected->isLogged();

@@ -6,9 +6,9 @@
     <ul class="nav nav-pills col-sm-11">
         <li class="active"><a data-toggle="pill" href="#soin_visage" id="visage">Soin visage</a></li>
         <li><a data-toggle="pill" href="#soin_corp" id="corp">Soin corp</a></li>
-        <li><a href="#">Make-up teint</a></li>
-        <li><a href="#">Make-up yeux</a></li>
-        <li><a href="#">Make-up levre</a></li>
+        <li><a data-toggle="pill" href="#make_up_yeux" id="corp">Make up yeux</a></li>
+        <li><a data-toggle="pill" href="#make_up_teint" id="corp">Make up lèvre</a></li>
+        <li><a data-toggle="pill" href="#make_up_levre" id="corp">Make up teint</a></li>
     </ul>
 <div class="pill-content col-sm-11">  
     <div id="soin_visage" class="col-sm-12 pill-pane fade in active text-center" style="margin-right: 15px; margin-top: 15px; margin-bottom: 15px">
@@ -73,6 +73,105 @@
         </div>
     <?php }
     $articlesTrousseSoinCorp->closeCursor();
+    ?>
+    </div> 
+    
+    <div id="make_up_yeux" class="col-sm-12 pill-pane fade text-center" style="margin-right: 15px; margin-top: 15px; margin-bottom: 15px">
+    <?php
+    $articlesMakeUpYeux=$articlesTrousseMakeUpYeux-> fetchAll();
+    foreach ($articlesMakeUpYeux as $data2)    
+    { ?>
+        <div class="col-sm-12 text-center" style="margin-right: 15px; margin-top: 15px; margin-bottom: 15px">
+            <div class="col-sm-2">
+                <?php
+                if($data2['file_article_trousse']){
+                    echo '<img src="images/'.$data2['file_article_trousse'].'" class="image3 width-100" alt="image" style="position:relative"/>';
+                } 
+                ?> 
+                </br>
+            </div>
+            <div class="col-sm-9">
+                <strong>
+                <span class="pull-left">
+                    <?php
+                    echo $data2['title_article_trousse']; ?>
+                </span>
+                </strong>
+                </br>
+                <?php $res=$data2['content_article_trousse'];
+                $res1=substr($res, 0, 40);
+                echo $res1; ?>
+                <a href="index.php?action=articleTrousse&amp;id=<?= $data2['id_article_trousse'] ?>">Lire la suite...</a>
+            </div>        
+        </div>
+    <?php }
+    $articlesTrousseMakeUpYeux->closeCursor();
+    ?>
+    </div> 
+    
+    <div id="make_up_levre" class="col-sm-12 pill-pane fade text-center" style="margin-right: 15px; margin-top: 15px; margin-bottom: 15px">
+    <?php
+    $articlesMakeUpLevre=$articlesTrousseMakeUpLevre-> fetchAll();
+    foreach ($articlesMakeUpLevre as $data3)    
+    { ?>
+        <div class="col-sm-12 text-center" style="margin-right: 15px; margin-top: 15px; margin-bottom: 15px">
+            <div class="col-sm-2">
+                <?php
+                if($data3['file_article_trousse']){
+                    echo '<img src="images/'.$data3['file_article_trousse'].'" class="image3 width-100" alt="image" style="position:relative"/>';
+                } 
+                ?> 
+                </br>
+            </div>
+            <div class="col-sm-9">
+                <strong>
+                <span class="pull-left">
+                    <?php
+                    echo $data3['title_article_trousse']; ?>
+                </span>
+                </strong>
+                </br>
+                <?php $res=$data3['content_article_trousse'];
+                $res1=substr($res, 0, 40);
+                echo $res1; ?>
+                <a href="index.php?action=articleTrousse&amp;id=<?= $data3['id_article_trousse'] ?>">Lire la suite...</a>
+            </div>        
+        </div>
+    <?php }
+    $articlesTrousseMakeUpLevre->closeCursor();
+    ?>
+    </div> 
+    
+    <div id="make_up_teint" class="col-sm-12 pill-pane fade text-center" style="margin-right: 15px; margin-top: 15px; margin-bottom: 15px">
+    <?php
+    $articlesMakeUpTeint=$articlesTrousseMakeUpTeint-> fetchAll();
+    foreach ($articlesMakeUpTeint as $data4)    
+    { ?>
+        <div class="col-sm-12 text-center" style="margin-right: 15px; margin-top: 15px; margin-bottom: 15px">
+            <div class="col-sm-2">
+                <?php
+                if($data4['file_article_trousse']){
+                    echo '<img src="images/'.$data4['file_article_trousse'].'" class="image3 width-100" alt="image" style="position:relative"/>';
+                } 
+                ?> 
+                </br>
+            </div>
+            <div class="col-sm-9">
+                <strong>
+                <span class="pull-left">
+                    <?php
+                    echo $data4['title_article_trousse']; ?>
+                </span>
+                </strong>
+                </br>
+                <?php $res=$data4['content_article_trousse'];
+                $res1=substr($res, 0, 40);
+                echo $res1; ?>
+                <a href="index.php?action=articleTrousse&amp;id=<?= $data4['id_article_trousse'] ?>">Lire la suite...</a>
+            </div>        
+        </div>
+    <?php }
+    $articlesTrousseMakeUpTeint->closeCursor();
     ?>
     </div> 
  </div>   

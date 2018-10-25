@@ -89,7 +89,7 @@
         <section class="row1">
             <div class="col-sm-12">
                  <?php
-                $req1=$articlesTrousse-> fetchAll();
+                $req1=$articlesTrousseSoinVisage-> fetchAll();
                 $req12 = array_slice($req1, 0, 3);
                 foreach ($req12 as $datas)    
                 {
@@ -113,7 +113,7 @@
                     </div>
                 <?php
                 }
-                $articlesTrousse->closeCursor();
+                $articlesTrousseSoinVisage->closeCursor();
                 ?>
             </div>
         </section>
