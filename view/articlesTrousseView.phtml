@@ -6,9 +6,9 @@
     <ul class="nav nav-pills col-sm-11">
         <li class="active"><a data-toggle="pill" href="#soin_visage" id="visage">Soin visage</a></li>
         <li><a data-toggle="pill" href="#soin_corp" id="corp">Soin corp</a></li>
-        <li><a data-toggle="pill" href="#make_up_yeux" id="corp">Make up yeux</a></li>
-        <li><a data-toggle="pill" href="#make_up_teint" id="corp">Make up lèvre</a></li>
-        <li><a data-toggle="pill" href="#make_up_levre" id="corp">Make up teint</a></li>
+        <li><a data-toggle="pill" href="#make_up_yeux" id="yeux">Make up yeux</a></li>
+        <li><a data-toggle="pill" href="#make_up_levre" id="levre">Make up lèvre</a></li>
+        <li><a data-toggle="pill" href="#make_up_teint" id="teint">Make up teint</a></li>
     </ul>
 <div class="pill-content col-sm-11">  
     <div id="soin_visage" class="col-sm-12 pill-pane fade in active text-center" style="margin-right: 15px; margin-top: 15px; margin-bottom: 15px">
@@ -177,11 +177,40 @@
  </div>   
     </br>
     <script>
-            $("#corp").click(function() {
-                $("#soin_visage").addClass("hidden");
-            });
-            $("#visage").click(function() {
-                $("#soin_visage").removeClass("hidden");
-            });
-        </script>
+         $("#visage").click(function() {
+            $("#soin_visage").removeClass("hidden");
+            $("#soin_corp").addClass("hidden");
+            $("#make_up_yeux").addClass("hidden");
+            $("#make_up_levre").addClass("hidden");
+            $("#make_up_teint").addClass("hidden");
+        });
+        $("#corp").click(function() {
+            $("#soin_visage").addClass("hidden");
+            $("#soin_corp").removeClass("hidden");
+            $("#make_up_yeux").addClass("hidden");
+            $("#make_up_levre").addClass("hidden");
+            $("#make_up_teint").addClass("hidden");
+        });
+        $("#yeux").click(function() {
+            $("#soin_visage").addClass("hidden");
+            $("#soin_corp").addClass("hidden");
+            $("#make_up_yeux").removeClass("hidden");
+            $("#make_up_levre").addClass("hidden");
+            $("#make_up_teint").addClass("hidden");
+        });
+        $("#levre").click(function() {
+            $("#soin_visage").addClass("hidden");
+            $("#soin_corp").addClass("hidden");
+            $("#make_up_yeux").addClass("hidden");
+            $("#make_up_levre").removeClass("hidden");
+            $("#make_up_teint").addClass("hidden");
+        });
+        $("#teint").click(function() {
+            $("#soin_visage").addClass("hidden");
+            $("#soin_corp").addClass("hidden");
+            $("#make_up_yeux").addClass("hidden");
+            $("#make_up_levre").addClass("hidden");
+            $("#make_up_teint").removeClass("hidden");
+        });
+    </script>
 </body>

@@ -303,11 +303,40 @@
         </section>
     </div>
     <script>
-        $("#corp").click(function() {
-            $("#soin_visage").addClass("hidden");
-        });
         $("#visage").click(function() {
             $("#soin_visage").removeClass("hidden");
+            $("#soin_corp").addClass("hidden");
+            $("#make_up_yeux").addClass("hidden");
+            $("#make_up_levre").addClass("hidden");
+            $("#make_up_teint").addClass("hidden");
+        });
+        $("#corp").click(function() {
+            $("#soin_visage").addClass("hidden");
+            $("#soin_corp").removeClass("hidden");
+            $("#make_up_yeux").addClass("hidden");
+            $("#make_up_levre").addClass("hidden");
+            $("#make_up_teint").addClass("hidden");
+        });
+        $("#yeux").click(function() {
+            $("#soin_visage").addClass("hidden");
+            $("#soin_corp").addClass("hidden");
+            $("#make_up_yeux").removeClass("hidden");
+            $("#make_up_levre").addClass("hidden");
+            $("#make_up_teint").addClass("hidden");
+        });
+        $("#levre").click(function() {
+            $("#soin_visage").addClass("hidden");
+            $("#soin_corp").addClass("hidden");
+            $("#make_up_yeux").addClass("hidden");
+            $("#make_up_levre").removeClass("hidden");
+            $("#make_up_teint").addClass("hidden");
+        });
+        $("#teint").click(function() {
+            $("#soin_visage").addClass("hidden");
+            $("#soin_corp").addClass("hidden");
+            $("#make_up_yeux").addClass("hidden");
+            $("#make_up_levre").addClass("hidden");
+            $("#make_up_teint").removeClass("hidden");
         });
     </script>
 </body>
