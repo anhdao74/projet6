@@ -71,15 +71,32 @@ class Routeur
                 $articleController = new ArticleController;
                 return [$articleController, 'addArticle'];
             }
+            elseif ($_GET['action'] == 'addArticleTrousse') 
+            {
+                $articleTrousseController = new ArticlesTrousseController;
+                return [$articleTrousseController, 'addArticleTrousse'];
+            }
             elseif ($_GET['action'] == 'addComment') 
             {
                 $commentController = new CommentController;
                 return [$commentController, 'addComment'];
             }
+            elseif ($_GET['action'] == 'editCommentArticle') 
+            {
+                $commentController = new CommentController;
+                return [$commentController, 'editCommentArticle'];
+                
+            }
             elseif ($_GET['action'] == 'addCommentTrousse') 
             {
                 $commentTrousseController = new CommentTrousseController;
                 return [$commentTrousseController, 'addCommentTrousse'];
+            }
+            elseif ($_GET['action'] == 'editCommentArticleTrousse') 
+            {
+                $commentTrousseController = new CommentTrousseController;
+                return [$commentTrousseController, 'editCommentArticleTrousse'];
+                
             }
             elseif ($_GET['action'] == 'editArticle') 
             {
@@ -98,6 +115,11 @@ class Routeur
                 $commentManager = new CommentManager;                
                 $commentController = new CommentController;
                 return [$commentController, 'removeComment'];
+            }
+            elseif ($_GET['action'] == 'removeCommentTrousse') 
+            {
+                $commentTrousseController = new CommentTrousseController;
+                return [$commentTrousseController, 'removeCommentTrousse'];
             }
             elseif ($_GET['action'] == 'signaledComment') 
             {

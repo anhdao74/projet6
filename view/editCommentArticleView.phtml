@@ -1,0 +1,33 @@
+<body>
+    <header class="page-header">
+        <h1>How she did</h1>
+    </header>
+    
+    <div class="container text-center">
+        <p><a href ="index.php?action=showAdmin"> Retour à la liste des articles </a></p>
+        <h4 id = "showComments"> Voir les commentaires </h4>
+        </br></br>
+        <div class="" id="commentShowed">
+        <?php
+            while ($data=$comments-> fetch()) {
+                if (!isset($data)) {                    
+                    echo 'Auncun commentaire';
+                } else { ?>
+                <div class="news"/>
+                    <h4>
+                        <?php echo $data['author'] ?>
+                        le <?= $data['creation_date_fr'] ?>
+                    </h4>
+                    <?php echo '<span class="text-center" id="commentContent">'.$data['content'].'</span>'?>
+                </div>
+
+                <form action="index.php?action=removeComment&amp;id=<?= $data['id'] ?>" method='post'>
+                    <input type="hidden" name="id" value="<?=$_GET['articleId']?>"/> 
+                <button class="btn btn-xs btn-danger" type="submit"><span class="glyphicon glyphicon-warning-sign"></span> Supprimer</button>
+                </form> 
+                <?php }
+            }
+            $comments->closeCursor(); ?>
+        </div>
+    </div>
+</body>

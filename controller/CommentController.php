@@ -1,14 +1,14 @@
 <?php
 class CommentController 
 {
-function listComments()
+    function listComments()
     {
         $db = Db::getConnexionPDO();
         $commentManager = new CommentManager($db); 
-	    $comments = $commentManager->getComments($articleId); 
+        $comments = $commentManager->getComments($articleId); 
 	    
     }
-function listCommentsAdmin()
+    function listCommentsAdmin()
     {
         $commentManager = new CommentManager(); 
         $listcomments = $commentManager->getCommentsAdmin(); 
@@ -18,7 +18,20 @@ function listCommentsAdmin()
         require('view/layoutView.phtml');
         
     }
-function addComment()
+    function editCommentArticle()
+    {
+        $db = Db::getConnexionPDO();
+        $commentManager = new CommentManager($db); 
+        $comments = $commentManager->getComments($_GET['articleId']); 
+        $connected= new UserSession();
+        $logged=$connected->isLogged();
+        $template = 'editCommentArticle';
+        $title = 'G�rer les commentaire';
+        
+        require('view/layoutView.phtml');
+	    
+    }
+    function addComment()
     {
         $commentManager = new CommentManager(); 
         if (isset($_POST['id']))
@@ -56,7 +69,7 @@ function addComment()
         $req = new FlashMessageSession();
         $flash = $req->asMessage();
         $flash = $req->setFlash('Le commentaire a bien été supprimé');
-        header('Location: index.php?action=showAdmin');
+        header('Location: index.php?action=editCommentArticle&articleId='. strip_tags($_POST['id']));
         exit();
                
     }

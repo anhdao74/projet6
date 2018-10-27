@@ -28,30 +28,37 @@
         while ($data=$articles-> fetch())
         {
         ?>
-        
-            <section class="col-sm-offset-1 col-sm-8 table-responsive">
-                <table class="table table-bordered table-striped table-condensed">
+        <section class="col-sm-offset-1 col-sm-10 table-responsive">
+            <table class="table table-bordered table-striped table-condensed">
                 <tr>
                     <td>
-                    <?php echo $data['title']; ?>
+                        <?php echo $data['title']; ?>
                     </td>
 
                     <td>
-                    le <?=$data['article_date_fr']; ?>
+                        le <?=$data['article_date_fr']; ?>
                     </td>
 
                     <td>
-                    <form action="index.php?action=editArticle&amp;id=<?= $data['id'] ?>" method="POST"/>
-                    <button class="btn btn-sm btn-info"><span class="glyphicon glyphicon-pencil"></span> Modifier</button>
-                    </form></td>
+                        <form action="index.php?action=editArticle&amp;id=<?= $data['id'] ?>" method="POST"/>
+                            <button class="btn btn-sm btn-info"><span class="glyphicon glyphicon-pencil"></span> Modifier</button>
+                        </form>
+                    </td>
 
-                    <td><form action="index.php?action=removeArticle&amp;id=<?= $data['id'] ?>" method="POST"/>
-                    <button class="btn btn-sm btn-danger"><span class="glyphicon glyphicon-trash"></span> Supprimer</button>
-                    </form></td>
+                    <td>
+                        <form action="index.php?action=removeArticle&amp;id=<?= $data['id'] ?>" method="POST"/>
+                            <button class="btn btn-sm btn-danger"><span class="glyphicon glyphicon-trash"></span> Supprimer</button>
+                        </form>
+                    </td>
+
+                    <td>
+                        <form action="index.php?action=editCommentArticle&amp;articleId=<?= $data['id'] ?>" method="POST"/>
+                            <button class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-trash"></span> Gérer les commentaires</button>
+                        </form>
+                    </td>
                 </tr>
-                </table>
-            </section>
-
+            </table>
+        </section>
         <?php
         }
         $articles->closeCursor();
@@ -83,226 +90,268 @@
                 </div>
                 </form>
             </section>
-        </br>
-        <br><br>
-        <section class="row">
-        <div class="col-sm-12">
-        <h2> Mes articles de ma trousse </h2>
+        </br><br><br>
         
-            <ul class="nav nav-pills col-sm-11">
-        <li class="active"><a data-toggle="pill" href="#soin_visage" id="visage">Soin visage</a></li>
-        <li><a data-toggle="pill" href="#soin_corp" id="corp">Soin corp</a></li>
-        <li><a data-toggle="pill" href="#make_up_yeux" id="yeux">Make-up yeux</a></li>
-        <li><a data-toggle="pill" href="#make_up_levre" id="levre">Make-up lèvre</a></li>
-        <li><a data-toggle="pill" href="#make_up_teint" id="teint">Make-up teint</a></li>
-    </ul>
-<div class="pill-content col-sm-11">  
-    <div id="soin_visage" class="col-sm-12 pill-pane fade in active text-center" style="margin-right: 15px; margin-top: 15px; margin-bottom: 15px">
-    <?php
-    $datas1=$articlesTrousseSoinVisage-> fetchAll();
-    foreach ($datas1 as $data)    
-    { ?>
-        <div class="col-sm-12 text-center" style="margin-right: 15px; margin-top: 15px; margin-bottom: 15px">
-            <div class="col-sm-2">
-                <?php
-                if($data['file_article_trousse']){
-                    echo '<img src="images/'.$data['file_article_trousse'].'" class="image3 width-100" alt="image" style="position:relative"/>';
-                } 
-                ?> 
-                </br>
-            </div>
-            <div class="col-sm-9">
-                <strong>
-                <span class="pull-left">
+        <section class="row">
+            <div class="col-sm-12">
+                <h2> Mes articles de ma trousse </h2>
+        
+                    <ul class="nav nav-pills col-sm-11">
+                        <li class="active"><a data-toggle="pill" href="#soin_visage" id="visage">Soin visage</a></li>
+                        <li><a data-toggle="pill" href="#soin_corp" id="corp">Soin corp</a></li>
+                        <li><a data-toggle="pill" href="#make_up_yeux" id="yeux">Make-up yeux</a></li>
+                        <li><a data-toggle="pill" href="#make_up_levre" id="levre">Make-up lèvre</a></li>
+                        <li><a data-toggle="pill" href="#make_up_teint" id="teint">Make-up teint</a></li>
+                    </ul>
+                <div class="pill-content col-sm-11" id="articlesTrousse">  
+                    <div id="soin_visage" class="col-sm-12 pill-pane fade in active text-center" style="margin-right: 15px; margin-top: 15px; margin-bottom: 15px">
                     <?php
-                    echo $data['title_article_trousse']; ?>
-                </span>
-                </strong>
-                </br>
-                <form action="index.php?action=editArticleTrousse&amp;id=<?= $data['id_article_trousse'] ?>" method="POST"/>
-                    <button class="btn btn-sm btn-info"><span class="glyphicon glyphicon-pencil"></span> Modifier</button>
-                </form>
-                <form action="index.php?action=removeArticleTrousse&amp;id=<?= $data['id_article_trousse'] ?>" method="POST"/>
-                    <button class="btn btn-sm btn-danger"><span class="glyphicon glyphicon-trash"></span> Supprimer</button>
-                </form>
-            </div>        
-        </div>
-    <?php }
-    $articlesTrousseSoinVisage->closeCursor(); ?>
-    </div>
-    
-    <div id="soin_corp" class="col-sm-12 pill-pane fade text-center" style="margin-right: 15px; margin-top: 15px; margin-bottom: 15px">
-    <?php
-    $articlesSoinCorp=$articlesTrousseSoinCorp-> fetchAll();
-    foreach ($articlesSoinCorp as $data1)    
-    { ?>
-        <div class="col-sm-12 text-center" style="margin-right: 15px; margin-top: 15px; margin-bottom: 15px">
-            <div class="col-sm-2">
-                <?php
-                if($data1['file_article_trousse']){
-                    echo '<img src="images/'.$data1['file_article_trousse'].'" class="image3 width-100" alt="image" style="position:relative"/>';
-                } 
-                ?> 
-                </br>
-            </div>
-            <div class="col-sm-9">
-                <strong>
-                <span class="pull-left">
-                    <?php
-                    echo $data1['title_article_trousse']; ?>
-                </span>
-                </strong>
-                </br>
-                <form action="index.php?action=editArticleTrousse&amp;id=<?= $data1['id_article_trousse'] ?>" method="POST"/>
-                    <button class="btn btn-sm btn-info"><span class="glyphicon glyphicon-pencil"></span> Modifier</button>
-                </form>
-                <form action="index.php?action=removeArticleTrousse&amp;id=<?= $data1['id_article_trousse'] ?>" method="POST"/>
-                    <button class="btn btn-sm btn-danger"><span class="glyphicon glyphicon-trash"></span> Supprimer</button>
-                </form>
-            </div>        
-        </div>
-    <?php }
-    $articlesTrousseSoinCorp->closeCursor();
-    ?>
-    </div>
-    
-    <div id="make_up_yeux" class="col-sm-12 pill-pane fade text-center" style="margin-right: 15px; margin-top: 15px; margin-bottom: 15px">
-    <?php
-    $articlesMakeUpYeux=$articlesTrousseMakeUpYeux-> fetchAll();
-    foreach ($articlesMakeUpYeux as $data2)    
-    { ?>
-        <div class="col-sm-12 text-center" style="margin-right: 15px; margin-top: 15px; margin-bottom: 15px">
-            <div class="col-sm-2">
-                <?php
-                if($data2['file_article_trousse']){
-                    echo '<img src="images/'.$data2['file_article_trousse'].'" class="image3 width-100" alt="image" style="position:relative"/>';
-                } 
-                ?> 
-                </br>
-            </div>
-            <div class="col-sm-9">
-                <strong>
-                <span class="pull-left">
-                    <?php
-                    echo $data2['title_article_trousse']; ?>
-                </span>
-                </strong>
-                </br>
-                <form action="index.php?action=editArticleTrousse&amp;id=<?= $data2['id_article_trousse'] ?>" method="POST"/>
-                    <button class="btn btn-sm btn-info"><span class="glyphicon glyphicon-pencil"></span> Modifier</button>
-                </form>
-                <form action="index.php?action=removeArticleTrousse&amp;id=<?= $data2['id_article_trousse'] ?>" method="POST"/>
-                    <button class="btn btn-sm btn-danger"><span class="glyphicon glyphicon-trash"></span> Supprimer</button>
-                </form>
-            </div>        
-        </div>
-    <?php }
-    $articlesTrousseMakeUpYeux->closeCursor();
-    ?>
-    </div>
-    
-    <div id="make_up_levre" class="col-sm-12 pill-pane fade text-center" style="margin-right: 15px; margin-top: 15px; margin-bottom: 15px">
-    <?php
-    $articlesMakeUpLevre=$articlesTrousseMakeUpLevre-> fetchAll();
-    foreach ($articlesMakeUpLevre as $data3)    
-    { ?>
-        <div class="col-sm-12 text-center" style="margin-right: 15px; margin-top: 15px; margin-bottom: 15px">
-            <div class="col-sm-2">
-                <?php
-                if($data3['file_article_trousse']){
-                    echo '<img src="images/'.$data3['file_article_trousse'].'" class="image3 width-100" alt="image" style="position:relative"/>';
-                } 
-                ?> 
-                </br>
-            </div>
-            <div class="col-sm-9">
-                <strong>
-                <span class="pull-left">
-                    <?php
-                    echo $data3['title_article_trousse']; ?>
-                </span>
-                </strong>
-                </br>
-                <form action="index.php?action=editArticleTrousse&amp;id=<?= $data3['id_article_trousse'] ?>" method="POST"/>
-                    <button class="btn btn-sm btn-info"><span class="glyphicon glyphicon-pencil"></span> Modifier</button>
-                </form>
-                <form action="index.php?action=removeArticleTrousse&amp;id=<?= $data3['id_article_trousse'] ?>" method="POST"/>
-                    <button class="btn btn-sm btn-danger"><span class="glyphicon glyphicon-trash"></span> Supprimer</button>
-                </form>
-            </div>        
-        </div>
-    <?php }
-    $articlesTrousseMakeUpLevre->closeCursor();
-    ?>
-    </div>
-    
-    <div id="make_up_teint" class="col-sm-12 pill-pane fade text-center" style="margin-right: 15px; margin-top: 15px; margin-bottom: 15px">
-    <?php
-    $articlesMakeUpTeint=$articlesTrousseMakeUpTeint-> fetchAll();
-    foreach ($articlesMakeUpTeint as $data4)    
-    { ?>
-        <div class="col-sm-12 text-center" style="margin-right: 15px; margin-top: 15px; margin-bottom: 15px">
-            <div class="col-sm-2">
-                <?php
-                if($data4['file_article_trousse']){
-                    echo '<img src="images/'.$data4['file_article_trousse'].'" class="image3 width-100" alt="image" style="position:relative"/>';
-                } 
-                ?> 
-                </br>
-            </div>
-            <div class="col-sm-9">
-                <strong>
-                <span class="pull-left">
-                    <?php
-                    echo $data4['title_article_trousse']; ?>
-                </span>
-                </strong>
-                </br>
-                <form action="index.php?action=editArticleTrousse&amp;id=<?= $data4['id_article_trousse'] ?>" method="POST"/>
-                    <button class="btn btn-sm btn-info"><span class="glyphicon glyphicon-pencil"></span> Modifier</button>
-                </form>
-                <form action="index.php?action=removeArticleTrousse&amp;id=<?= $data4['id_article_trousse'] ?>" method="POST"/>
-                    <button class="btn btn-sm btn-danger"><span class="glyphicon glyphicon-trash"></span> Supprimer</button>
-                </form>
-            </div>        
-        </div>
-    <?php }
-    $articlesTrousseMakeUpTeint->closeCursor();
-    ?>
-    </div> 
-    </br>
-    
-        </br>
-            <section class="col-sm-10">
-                <h2 class="ajout"> Ajouter un article dans ma trousse </h2>
+                    $datas1=$articlesTrousseSoinVisage-> fetchAll();
+                    foreach ($datas1 as $data)    
+                    { ?>
+                        <section class="col-sm-offset-1 col-sm-10 table-responsive">
+                            <table class="table table-bordered table-striped table-condensed">
+                                <tr>
+                                    <td>
+                                        <?php echo $data['title_article_trousse']; ?>
+                                    </td>
 
-                <form action='index.php?action=addArticleTrousse' method='post' enctype='multipart/form-data'>
-                
-                <div>
-                    <label for="title">Type article</label><br />
-                    <input type="text" id="type" name="title">
-                </div>
-                <div>
-                    <label for="title">Titre chapitre</label><br />
-                    <input type="text" id="title" name="title">
-                </div>
-                <div>
-                    <label for="content">Texte</label><br />
-                    <textarea id="#mytextarea" name="content"></textarea>
-                </div>
-                <div>
-                    <label for="file">Fichier (tous formats | max. 1 Mo) :</label><br />
-                    <input type="file" name="file" id="file" /><br />
-                </div>
-                <div>
-                    <button class="btn btn-primary btn-primary"><span class="glyphicon glyphicon-floppy-saved"></span> Enregistrer</button>
-                </div>
-                </form>
-            </section>
-        </div>
+                                    <td>
+                                        le <?=$data['article_date_fr']; ?>
+                                    </td>
+
+                                    <td>
+                                        <form action="index.php?action=editArticleTrousse&amp;id=<?= $data['id_article_trousse'] ?>" method="POST"/>
+                                            <button class="btn btn-sm btn-info"><span class="glyphicon glyphicon-pencil"></span> Modifier</button>
+                                        </form>
+                                    </td>
+
+                                    <td>
+                                        <form action="index.php?action=removeArticleTrousse&amp;id=<?= $data['id_article_trousse'] ?>" method="POST"/>
+                                            <button class="btn btn-sm btn-danger"><span class="glyphicon glyphicon-trash"></span> Supprimer</button>
+                                        </form>
+                                    </td>
+
+                                    <td>
+                                        <form action="index.php?action=editCommentArticleTrousse&amp;articleId=<?= $data['id_article_trousse'] ?>" method="POST"/>
+                                            <button class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-trash"></span> Gérer les commentaires</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            </table>
+                        </section>
+                    <?php }
+                    $articlesTrousseSoinVisage->closeCursor(); ?>
+                    </div>
+
+                    <div id="soin_corp" class="col-sm-12 pill-pane fade text-center" style="margin-right: 15px; margin-top: 15px; margin-bottom: 15px">
+                    <?php
+                    $articlesSoinCorp=$articlesTrousseSoinCorp-> fetchAll();
+                    foreach ($articlesSoinCorp as $data1)    
+                    { ?>
+                        <section class="col-sm-offset-1 col-sm-10 table-responsive">
+                            <table class="table table-bordered table-striped table-condensed">
+                                <tr>
+                                    <td>
+                                        <?php echo $data1['title_article_trousse']; ?>
+                                    </td>
+
+                                    <td>
+                                        le <?=$data1['article_date_fr']; ?>
+                                    </td>
+
+                                    <td>
+                                        <form action="index.php?action=editArticleTrousse&amp;id=<?= $data1['id_article_trousse'] ?>" method="POST"/>
+                                            <button class="btn btn-sm btn-info"><span class="glyphicon glyphicon-pencil"></span> Modifier</button>
+                                        </form>
+                                    </td>
+
+                                    <td>
+                                        <form action="index.php?action=removeArticleTrousse&amp;id=<?= $data1['id_article_trousse'] ?>" method="POST"/>
+                                            <button class="btn btn-sm btn-danger"><span class="glyphicon glyphicon-trash"></span> Supprimer</button>
+                                        </form>
+                                    </td>
+
+                                    <td>
+                                        <form action="index.php?action=editCommentArticleTrousse&amp;articleId=<?= $data1['id_article_trousse'] ?>" method="POST"/>
+                                            <button class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-trash"></span> Gérer les commentaires</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            </table>
+                        </section>
+                    <?php }
+                    $articlesTrousseSoinCorp->closeCursor();
+                    ?>
+                    </div>
+
+                    <div id="make_up_yeux" class="col-sm-12 pill-pane fade text-center" style="margin-right: 15px; margin-top: 15px; margin-bottom: 15px">
+                    <?php
+                    $articlesMakeUpYeux=$articlesTrousseMakeUpYeux-> fetchAll();
+                    foreach ($articlesMakeUpYeux as $data2)    
+                    { ?>
+                        <section class="col-sm-offset-1 col-sm-10 table-responsive">
+                            <table class="table table-bordered table-striped table-condensed">
+                                <tr>
+                                    <td>
+                                        <?php echo $data2['title_article_trousse']; ?>
+                                    </td>
+
+                                    <td>
+                                        le <?=$data2['article_date_fr']; ?>
+                                    </td>
+
+                                    <td>
+                                        <form action="index.php?action=editArticleTrousse&amp;id=<?= $data2['id_article_trousse'] ?>" method="POST"/>
+                                            <button class="btn btn-sm btn-info"><span class="glyphicon glyphicon-pencil"></span> Modifier</button>
+                                        </form>
+                                    </td>
+
+                                    <td>
+                                        <form action="index.php?action=removeArticleTrousse&amp;id=<?= $data2['id_article_trousse'] ?>" method="POST"/>
+                                            <button class="btn btn-sm btn-danger"><span class="glyphicon glyphicon-trash"></span> Supprimer</button>
+                                        </form>
+                                    </td>
+
+                                    <td>
+                                        <form action="index.php?action=editCommentArticleTrousse&amp;articleId=<?= $data2['id_article_trousse'] ?>" method="POST"/>
+                                            <button class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-trash"></span> Gérer les commentaires</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            </table>
+                        </section>
+                    <?php }
+                    $articlesTrousseMakeUpYeux->closeCursor();
+                    ?>
+                    </div>
+
+                    <div id="make_up_levre" class="col-sm-12 pill-pane fade text-center" style="margin-right: 15px; margin-top: 15px; margin-bottom: 15px">
+                    <?php
+                    $articlesMakeUpLevre=$articlesTrousseMakeUpLevre-> fetchAll();
+                    foreach ($articlesMakeUpLevre as $data3)    
+                    { ?>
+                        <section class="col-sm-offset-1 col-sm-10 table-responsive">
+                            <table class="table table-bordered table-striped table-condensed">
+                                <tr>
+                                    <td>
+                                        <?php echo $data3['title_article_trousse']; ?>
+                                    </td>
+
+                                    <td>
+                                        le <?=$data3['article_date_fr']; ?>
+                                    </td>
+
+                                    <td>
+                                        <form action="index.php?action=editArticleTrousse&amp;id=<?= $data3['id_article_trousse'] ?>" method="POST"/>
+                                            <button class="btn btn-sm btn-info"><span class="glyphicon glyphicon-pencil"></span> Modifier</button>
+                                        </form>
+                                    </td>
+
+                                    <td>
+                                        <form action="index.php?action=removeArticleTrousse&amp;id=<?= $data3['id_article_trousse'] ?>" method="POST"/>
+                                            <button class="btn btn-sm btn-danger"><span class="glyphicon glyphicon-trash"></span> Supprimer</button>
+                                        </form>
+                                    </td>
+
+                                    <td>
+                                        <form action="index.php?action=editCommentArticleTrousse&amp;articleId=<?= $data3['id_article_trousse'] ?>" method="POST"/>
+                                            <button class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-trash"></span> Gérer les commentaires</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            </table>
+                        </section>
+                    <?php }
+                    $articlesTrousseMakeUpLevre->closeCursor();
+                    ?>
+                    </div>
+
+                    <div id="make_up_teint" class="col-sm-12 pill-pane fade text-center" style="margin-right: 15px; margin-top: 15px; margin-bottom: 15px">
+                    <?php
+                    $articlesMakeUpTeint=$articlesTrousseMakeUpTeint-> fetchAll();
+                    foreach ($articlesMakeUpTeint as $data4)    
+                    { ?>
+                        <section class="col-sm-offset-1 col-sm-10 table-responsive">
+                            <table class="table table-bordered table-striped table-condensed">
+                                <tr>
+                                    <td>
+                                        <?php echo $data4['title_article_trousse']; ?>
+                                    </td>
+
+                                    <td>
+                                        le <?=$data4['article_date_fr']; ?>
+                                    </td>
+
+                                    <td>
+                                        <form action="index.php?action=editArticleTrousse&amp;id=<?= $data4['id_article_trousse'] ?>" method="POST"/>
+                                            <button class="btn btn-sm btn-info"><span class="glyphicon glyphicon-pencil"></span> Modifier</button>
+                                        </form>
+                                    </td>
+
+                                    <td>
+                                        <form action="index.php?action=removeArticleTrousse&amp;id=<?= $data4['id_article_trousse'] ?>" method="POST"/>
+                                            <button class="btn btn-sm btn-danger"><span class="glyphicon glyphicon-trash"></span> Supprimer</button>
+                                        </form>
+                                    </td>
+
+                                    <td>
+                                        <form action="index.php?action=editCommentArticleTrousse&amp;articleId=<?= $data4['id_article_trousse'] ?>" method="POST"/>
+                                            <button class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-trash"></span> Gérer les commentaires</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            </table>
+                        </section>
+                    <?php }
+                    $articlesTrousseMakeUpTeint->closeCursor();
+                    ?>
+                    </div> 
+                    </br></br>
+            </div> 
+        </section>
+        
+        <section class="col-sm-10">
+            <h2 class="ajout"> Ajouter un article dans ma trousse </h2>
+
+            <form action='index.php?action=addArticleTrousse' method='post' enctype='multipart/form-data'>
+
+            <div>
+                <label for="type">Type article</label><br />
+                <select name="maliste" id="type">
+                    <option value="1" selected>Soin visage</option>
+                    <option value="2">Soin corp</option>
+                    <option value="3">Make-up yeux</option>
+                    <option value="4">Make-up levre</option>
+                    <option value="5">Make-up teint</option>
+                </select>
+            </div>
+            <div>
+                <label for="title">Titre chapitre</label><br />
+                <input type="text" id="title" name="title">
+            </div>
+            <div>
+                <label for="content">Texte</label><br />
+                <textarea id="#mytextarea" name="content"></textarea>
+            </div>
+            <div>
+                <label for="file">Fichier (tous formats | max. 1 Mo) :</label><br />
+                <input type="file" name="file" id="file" /><br />
+            </div>
+            <div>
+                <button class="btn btn-primary btn-primary"><span class="glyphicon glyphicon-floppy-saved"></span> Enregistrer</button>
+            </div>
+            </form>
         </section>
     </div>
     <script>
+        $("#articlesTrousse").ready(function() {
+            $("#soin_visage").removeClass("hidden");
+            $("#soin_corp").addClass("hidden");
+            $("#make_up_yeux").addClass("hidden");
+            $("#make_up_levre").addClass("hidden");
+            $("#make_up_teint").addClass("hidden");
+        });
         $("#visage").click(function() {
             $("#soin_visage").removeClass("hidden");
             $("#soin_corp").addClass("hidden");

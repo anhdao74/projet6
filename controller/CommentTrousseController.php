@@ -3,22 +3,35 @@
 class CommentTrousseController 
 {
 function listComments()
-    {
-        $db = Db::getConnexionPDO();
-        $commentTrousseManager = new CommentTrousseManager($db); 
-	    $commentsTrousse = $commentTrousseManager->getComments($articleId); 
-	    
-    }
+{
+    $db = Db::getConnexionPDO();
+    $commentTrousseManager = new CommentTrousseManager($db); 
+        $commentsTrousse = $commentTrousseManager->getComments($articleId); 
+
+}
 function listCommentsAdmin()
-    {
-        $commentTrousseManager = new CommentTrousseManager(); 
-        $listcomments = $commentTrousseManager->getCommentsAdmin(); 
-        $template = 'admin';
-        $title = 'Page administration';
-        
-        require('view/layoutView.phtml');
-        
-    }
+{
+    $commentTrousseManager = new CommentTrousseManager(); 
+    $listcomments = $commentTrousseManager->getCommentsAdmin(); 
+    $template = 'admin';
+    $title = 'Page administration';
+
+    require('view/layoutView.phtml');
+
+} 
+function editCommentArticleTrousse()
+{
+    $db = Db::getConnexionPDO();
+    $commentTrousseManager = new CommentTrousseManager($db); 
+    $commentsTrousse = $commentTrousseManager->getComments($_GET['articleId']); 
+    $connected= new UserSession();
+    $logged=$connected->isLogged();
+    $template = 'editCommentArticleTrousse';
+    $title = 'G�rer les commentaire';
+
+    require('view/layoutView.phtml');
+
+}
 function addCommentTrousse()
 {
     $commentTrousseManager = new CommentTrousseManager(); 
@@ -49,13 +62,13 @@ function addCommentTrousse()
     function removeCommentTrousse()
     {
         $verif = new VerifyId();
-        $comment = $verif-> getCommentId();
+        $comment = $verif-> getCommentTrousseId();
         $commentTrousseManager = new CommentTrousseManager();  
         $removeLine=$commentTrousseManager->cancelComment(strip_tags($_GET['id']));
         $req = new FlashMessageSession();
         $flash = $req->asMessage();
         $flash = $req->setFlash('Le commentaire a bien été supprimé');
-        header('Location: index.php?action=showAdmin');
+        header('Location: index.php?action=editCommentArticleTrousse&articleId='. strip_tags($_POST['id']));
         exit();
                
     }

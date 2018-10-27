@@ -2,9 +2,14 @@
 
 class ArticleTrousseManager extends Manager {
 
-    public function getArticlesTrousse($typeArticle) {
+    public function getArticlesTrousseByType($typeArticle) {
         $req = $this->pdo->prepare('SELECT id_article_trousse, title_article_trousse , content_article_trousse , file_article_trousse, DATE_FORMAT(date_article_trousse, \'%d/%m/%Y à %Hh%i\') AS article_date_fr, type_article FROM trousse WHERE type_article=?');
         $req->execute(array($typeArticle));
+        return $req;
+    }
+    
+     public function getArticlesTrousse() {
+        $req = $this->pdo->query('SELECT id_article_trousse, title_article_trousse , content_article_trousse , file_article_trousse, DATE_FORMAT(date_article_trousse, \'%d/%m/%Y à %Hh%i\') AS article_date_fr, type_article FROM trousse');
         return $req;
     }
 
@@ -16,9 +21,9 @@ class ArticleTrousseManager extends Manager {
         return $article;
     }
 
-    public function postArticleTrousse($title_article_trousse , $content_article_trousse , $file_article_trousse) {
-        $query = $this->pdo->prepare('INSERT INTO trousse(title_article_trousse , content_article_trousse , date_article_trousse, file_article_trousse) VALUES (?,?,NOW(),?)');
-        $affectedLines = $query->execute(array($title_article_trousse , $content_article_trousse , $file_article_trousse));
+    public function postArticleTrousse($title_article_trousse , $content_article_trousse , $file_article_trousse, $type_article_trousse) {
+        $query = $this->pdo->prepare('INSERT INTO trousse(title_article_trousse , content_article_trousse , date_article_trousse, file_article_trousse, type_article ) VALUES (?,?,NOW(),?, ?)');
+        $affectedLines = $query->execute(array($title_article_trousse , $content_article_trousse , $file_article_trousse, $type_article_trousse));
         return $affectedLines;
     }
 

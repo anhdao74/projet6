@@ -88,13 +88,13 @@
     <div class="col-sm-12 container">
         <section class="row1">
             <div class="col-sm-12">
-                 <?php
+                <?php
                 $req1=$articlesTrousseSoinVisage-> fetchAll();
-                $req12 = array_slice($req1, 0, 3);
+                $req12 = array_slice($req1, 0, 1);
                 foreach ($req12 as $datas)    
                 {
                 ?>
-                    <div class="col-sm-3 news text-center" style="margin-right: 15px; margin-top: 15px; margin-bottom: 15px"/>
+                    <div class="col-sm-offset-1 col-sm-2 news text-center" style="margin-right: 15px; margin-top: 15px; margin-bottom: 15px"/>
                         <?php
                         if($datas['file_article_trousse']){
                             echo '<img src="images/'.$datas['file_article_trousse'].'" class="image3 width-100" alt="image" style="position:relative"/>';
@@ -106,14 +106,105 @@
                         echo $datas['title_article_trousse']; ?>
                         </strong>
                         </br>
-                        <?php $res=$datas['content_article_trousse'];
-                        $res=substr($res, 0, 40);
-                        echo $res; ?>
                         <a href="index.php?action=articleTrousse&amp;id=<?= $datas['id_article_trousse'] ?>">Lire la suite...</a>
                     </div>
                 <?php
                 }
                 $articlesTrousseSoinVisage->closeCursor();
+                ?>
+                <?php
+                $req1=$articlesTrousseSoinCorp-> fetchAll();
+                $req12 = array_slice($req1, 0, 1);
+                foreach ($req12 as $datas)    
+                {
+                ?>
+                    <div class="col-sm-2 news text-center" style="margin-right: 15px; margin-top: 15px; margin-bottom: 15px"/>
+                        <?php
+                        if($datas['file_article_trousse']){
+                            echo '<img src="images/'.$datas['file_article_trousse'].'" class="image3 width-100" alt="image" style="position:relative"/>';
+                        } 
+                        ?> 
+                        </br>
+                        <strong>
+                        <?php
+                        echo $datas['title_article_trousse']; ?>
+                        </strong>
+                        </br>
+                        <a href="index.php?action=articleTrousse&amp;id=<?= $datas['id_article_trousse'] ?>">Lire la suite...</a>
+                    </div>
+                <?php
+                }
+                $articlesTrousseSoinCorp->closeCursor();
+                ?>
+                <?php
+                $req1=$articlesTrousseMakeUpYeux-> fetchAll();
+                $req12 = array_slice($req1, 0, 1);
+                foreach ($req12 as $datas)    
+                {
+                ?>
+                    <div class="col-sm-2 news text-center" style="margin-right: 15px; margin-top: 15px; margin-bottom: 15px"/>
+                        <?php
+                        if($datas['file_article_trousse']){
+                            echo '<img src="images/'.$datas['file_article_trousse'].'" class="image3 width-100" alt="image" style="position:relative"/>';
+                        } 
+                        ?> 
+                        </br>
+                        <strong>
+                        <?php
+                        echo $datas['title_article_trousse']; ?>
+                        </strong>
+                        </br>
+                        <a href="index.php?action=articleTrousse&amp;id=<?= $datas['id_article_trousse'] ?>">Lire la suite...</a>
+                    </div>
+                <?php
+                }
+                $articlesTrousseMakeUpYeux->closeCursor();
+                ?><?php
+                $req1=$articlesTrousseMakeUpLevre-> fetchAll();
+                $req12 = array_slice($req1, 0, 1);
+                foreach ($req12 as $datas)    
+                {
+                ?>
+                    <div class="col-sm-2 news text-center" style="margin-right: 15px; margin-top: 15px; margin-bottom: 15px"/>
+                        <?php
+                        if($datas['file_article_trousse']){
+                            echo '<img src="images/'.$datas['file_article_trousse'].'" class="image3 width-100" alt="image" style="position:relative"/>';
+                        } 
+                        ?> 
+                        </br>
+                        <strong>
+                        <?php
+                        echo $datas['title_article_trousse']; ?>
+                        </strong>
+                        </br>
+                        <a href="index.php?action=articleTrousse&amp;id=<?= $datas['id_article_trousse'] ?>">Lire la suite...</a>
+                    </div>
+                <?php
+                }
+                $articlesTrousseMakeUpLevre->closeCursor();
+                ?><?php
+                $req1=$articlesTrousseMakeUpTeint-> fetchAll();
+                $req12 = array_slice($req1, 0, 1);
+                foreach ($req12 as $datas)    
+                {
+                ?>
+                    <div class="col-sm-2 news text-center" style="margin-right: 15px; margin-top: 15px; margin-bottom: 15px"/>
+                        <?php
+                        if($datas['file_article_trousse']){
+                            echo '<img src="images/'.$datas['file_article_trousse'].'" class="image3 width-100" alt="image" style="position:relative"/>';
+                        } 
+                        ?> 
+                        </br>
+                        <strong>
+                        <?php
+                        echo $datas['title_article_trousse']; ?>
+                        </strong>
+                        </br>
+                        <a href="index.php?action=articleTrousse&amp;id=<?= $datas['id_article_trousse'] ?>">Lire la suite...</a>
+                    </div>
+                <?php
+                }
+                $articlesTrousseMakeUpTeint->closeCursor();
                 ?>
             </div>
         </section>

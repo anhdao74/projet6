@@ -5,7 +5,7 @@ class ArticlesTrousseController
 function addArticleTrousse()
     {
         $articleTrousseManager = new ArticleTrousseManager();
-        $articleTroussesTrousseTrousse= $articleTrousseManager->getArticleTroussesTrousse();
+        $articleTroussesTrousseTrousse= $articleTrousseManager->getArticlesTrousse();
 		if (empty($_POST['title']) && empty($_POST['content']) && empty(($_FILES))) 
             {
                 $verif = new VerifyId();
@@ -18,7 +18,6 @@ function addArticleTrousse()
             }            
         else 
             {
-            var_dump($_FILES);
                 $fileName = $_FILES['file']['name'];
                 $fileExtension = strrchr($fileName, ".");
                 $fileTmpName = $_FILES['file']['tmp_name'];
@@ -31,7 +30,7 @@ function addArticleTrousse()
                 } else {
                     echo 'Seul les fichiers jpg et jpeg sont autoris�s';
                 }
-                $affectedLines= $articleTrousseManager->postArticleTrousse(strip_tags($_POST['title']), $_POST['content'], $_FILES['file']['name']);
+                $affectedLines= $articleTrousseManager->postArticleTrousse(strip_tags($_POST['title']), $_POST['content'], $_FILES['file']['name'], $_POST['maliste']);
                 $req = new FlashMessageSession();
                 $flash = $req->setFlash('Le chapitre a bien été ajouté');
             	header('Location: index.php?action=showAdmin');

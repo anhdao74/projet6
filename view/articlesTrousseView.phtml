@@ -10,7 +10,7 @@
         <li><a data-toggle="pill" href="#make_up_levre" id="levre">Make up lèvre</a></li>
         <li><a data-toggle="pill" href="#make_up_teint" id="teint">Make up teint</a></li>
     </ul>
-<div class="pill-content col-sm-11">  
+<div class="pill-content col-sm-11" id="articlesTrousse">  
     <div id="soin_visage" class="col-sm-12 pill-pane fade in active text-center" style="margin-right: 15px; margin-top: 15px; margin-bottom: 15px">
     <?php
     $datas1=$articlesTrousseSoinVisage-> fetchAll();
@@ -177,7 +177,14 @@
  </div>   
     </br>
     <script>
-         $("#visage").click(function() {
+        $("#articlesTrousse").ready(function() {
+            $("#soin_visage").removeClass("hidden");
+            $("#soin_corp").addClass("hidden");
+            $("#make_up_yeux").addClass("hidden");
+            $("#make_up_levre").addClass("hidden");
+            $("#make_up_teint").addClass("hidden");
+        });
+        $("#visage").click(function() {
             $("#soin_visage").removeClass("hidden");
             $("#soin_corp").addClass("hidden");
             $("#make_up_yeux").addClass("hidden");
