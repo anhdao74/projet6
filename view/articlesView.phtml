@@ -4,37 +4,67 @@
     </header>
 
 <div class="col-sm-11 container">
-        <section class="row1">
-            <div class="col-sm-12">
-                <?php
-                $datas1=$articles-> fetchAll();
-                foreach ($datas1 as $data)    
-                {
-                ?>
-                    <div class="col-sm-3 news text-center" style="margin-right: 15px; margin-top: 15px; margin-bottom: 15px"/>
-                        <?php
-                        if($data['file']){
-                            echo '<img src="images/'.$data['file'].'" class="image1 width-100" alt="image" style="position:relative"/>';
-                        } 
-                        ?> 
-                        </br>
-                        <strong>
-                        <?php
-                        echo $data['title']; ?>
-                        </strong>
-                        </br>
-                        <?php $res=$data['content'];
-                        $res=substr($res, 0, 40);
-                        echo $res; ?>
-                        <a href="index.php?action=article&amp;id=<?= $data['id'] ?>">Lire la suite...</a>
-                    </div>
-                <?php
-                }
-                $articles->closeCursor();
-                ?>
-            </div>
-        </section>
-    </div>
+    <section class="row1">
+        <div class="col-sm-12">
+            <?php
+            $datas1=$articles-> fetchAll();
+            $data2 = array_slice($datas1, 0,2);
+            foreach ($data2 as $data)    
+            {
+            ?>
+                <div class=" col-sm-6 news text-center"/>
+                    <?php
+                    if($data['file']){
+                        echo '<img src="images/'.$data['file'].'" class="image width-100" alt="image" style="position:relative"/>';
+                    } 
+                    ?> 
+                    </br></br>
+                    <strong>
+                    <?php
+                    echo $data['title']; ?>
+                    </strong>
+                    </br>
+                    <a href="index.php?action=article&amp;id=<?= $data['id'] ?>">Lire la suite...</a>
+                </div>
+            <div class="col-sm-1 vl"></div>
+            <?php
+            }
+            $articles->closeCursor();
+            ?>
+        </div>
+    </section>
+    
+    <section class="row1">
+        <div class="col-sm-12">
+            <?php
+            $data3 = array_slice($datas1, 2);
+            foreach ($data3 as $data)    
+            {
+            ?>
+                <div class="col-sm-4 news text-center"/>
+                 </br> </br> </br> </br> </br> </br> </br>
+                    <?php
+                    if($data['file']){
+                        echo '<img src="images/'.$data['file'].'" class="image1 width-100" alt="image" style="position:relative"/>';
+                    } 
+                    ?> 
+                    </br></br>
+                    <strong>
+                    <?php
+                    echo $data['title']; ?>
+                    </strong>
+                    </br>
+                    <a href="index.php?action=article&amp;id=<?= $data['id'] ?>">Lire la suite...</a>
+                    <div class="col-sm-1 vl2"></div>
+                </div>
+            
+            <?php
+            }
+            $articles->closeCursor();
+            ?>
+        </div>
+    </section>
+</div>
     
     </br>
 </body>

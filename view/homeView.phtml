@@ -21,7 +21,7 @@
                 <?php
                 $req=$articles-> fetchAll();
                 $datas = array_slice($req, 0, 1);
-                $datas1 = array_slice($req, 1);
+                $datas1 = array_slice($req, 1,3);
                 foreach ($datas as $data)    
                 {
                 ?>
@@ -39,11 +39,9 @@
                             echo $data['title']; ?>
                             </strong>
                             </br>
-                            <?php $res=$data['content'];
-                            $res=substr($res, 0, 40);
-                            echo $res; ?>
                             <a href="index.php?action=article&amp;id=<?= $data['id'] ?>">Lire la suite...</a>
                         </div>
+                        <a class="nav-link" href="index.php?action=articles"style="position: absolute; writing-mode: tb-rl; top: 450px; right:350px">Articles</a>
                     </div>
                 <?php
                 }
@@ -54,28 +52,30 @@
     </div>
     
     <div class="col-sm-12 container">
+        </br></br>
+        <hr>
+        </br></br>
         <section class="row1">
             <div class="col-sm-12">
                 <?php
-                foreach ($datas1 as $data)    
+                foreach ($datas1 as $data) 
                 {
                 ?>
-                    <div class="col-sm-3 news text-center" style="margin-right: 15px; margin-top: 15px; margin-bottom: 15px"/>
+                    <div class="col-sm-4 news text-center"/>
                         <?php
                         if($data['file']){
                             echo '<img src="images/'.$data['file'].'" class="image1 width-100" alt="image" style="position:relative"/>';
                         } 
                         ?> 
+                        <a class="nav-link" href="index.php?action=articles"style="position: absolute; writing-mode: tb-rl; top: 350px; right:15px">Articles</a>
                         </br>
                         <strong>
                         <?php
                         echo $data['title']; ?>
                         </strong>
                         </br>
-                        <?php $res=$data['content'];
-                        $res=substr($res, 0, 40);
-                        echo $res; ?>
                         <a href="index.php?action=article&amp;id=<?= $data['id'] ?>">Lire la suite...</a>
+                        <div class="col-sm-1 vl3"></div>
                     </div>
                 <?php
                 }
@@ -86,126 +86,187 @@
     </div>
     </br>
     <div class="col-sm-12 container">
+        </br></br>
+        <hr>
         <section class="row1">
+            <a class="text-center" href="index.php?action=articlesTrousse&amp"><h3>Ma trousse</h3></a>
+            </br></br>
             <div class="col-sm-12">
                 <?php
-                $req1=$articlesTrousseSoinVisage-> fetchAll();
-                $req12 = array_slice($req1, 0, 1);
-                foreach ($req12 as $datas)    
-                {
+                $reqArticlesTrousseSoinVisage=$articlesTrousseSoinVisage-> fetchAll();
+                $next = array_slice($reqArticlesTrousseSoinVisage, 1);
                 ?>
-                    <div class="col-sm-offset-1 col-sm-2 news text-center" style="margin-right: 15px; margin-top: 15px; margin-bottom: 15px"/>
-                        <?php
-                        if($datas['file_article_trousse']){
-                            echo '<img src="images/'.$datas['file_article_trousse'].'" class="image3 width-100" alt="image" style="position:relative"/>';
-                        } 
-                        ?> 
-                        </br>
-                        <strong>
-                        <?php
-                        echo $datas['title_article_trousse']; ?>
-                        </strong>
-                        </br>
-                        <a href="index.php?action=articleTrousse&amp;id=<?= $datas['id_article_trousse'] ?>">Lire la suite...</a>
+                <div id="carouselExampleControls" class="carousel slide col-sm-2" data-ride="carousel" style=" margin-left:35px; margin-right: 45px">
+                    <div class="carousel-inner">
+                        <div class="item active">
+                          <?php
+                              echo '<img class="image3 width-100" src="images/'.$reqArticlesTrousseSoinVisage[0]['file_article_trousse'].'" alt="slide">'; 
+                          ?>
+                            </br>
+                            <a href="index.php?action=articleTrousse&amp;id=<?= $reqArticlesTrousseSoinVisage[0]['id_article_trousse'] ?>">Voir plus...</a>
+                        </div>
+                        <?php foreach ($next as $articleTrousseSoinVisage) { ?>
+                            <div class="item">
+                                <?php
+                                    echo '<img class="image3 width-100" src="images/'.$articleTrousseSoinVisage['file_article_trousse'].'" alt="slide">'; 
+                                ?>
+                                </br>
+                                <a href="index.php?action=articleTrousse&amp;id=<?= $articleTrousseSoinVisage['id_article_trousse'] ?>">Voir plus...</a>
+                            </div>
+                        <?php } 
+                        $articlesTrousseSoinVisage->closeCursor();?>
+
                     </div>
+                    <a class="left carousel-control" href="#carouselExampleControls" data-slide="prev">
+                      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                      <span class="sr-only">Précédent</span>
+                    </a>
+                    <a class="right carousel-control" href="#carouselExampleControls" data-slide="next">
+                      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                      <span class="sr-only">Suivant</span>
+                    </a>
+                </div>
+                
                 <?php
-                }
-                $articlesTrousseSoinVisage->closeCursor();
+                $reqArticlesTrousseSoinCorp=$articlesTrousseSoinCorp-> fetchAll();
+                $next = array_slice($reqArticlesTrousseSoinCorp, 1);
                 ?>
-                <?php
-                $req1=$articlesTrousseSoinCorp-> fetchAll();
-                $req12 = array_slice($req1, 0, 1);
-                foreach ($req12 as $datas)    
-                {
-                ?>
-                    <div class="col-sm-2 news text-center" style="margin-right: 15px; margin-top: 15px; margin-bottom: 15px"/>
-                        <?php
-                        if($datas['file_article_trousse']){
-                            echo '<img src="images/'.$datas['file_article_trousse'].'" class="image3 width-100" alt="image" style="position:relative"/>';
-                        } 
-                        ?> 
-                        </br>
-                        <strong>
-                        <?php
-                        echo $datas['title_article_trousse']; ?>
-                        </strong>
-                        </br>
-                        <a href="index.php?action=articleTrousse&amp;id=<?= $datas['id_article_trousse'] ?>">Lire la suite...</a>
+                <div id="carouselExampleControls1" class="carousel slide col-sm-2" data-ride="carousel" style="margin-right: 45px">
+                    <div class="carousel-inner">
+                        <div class="item active">
+                          <?php
+                              echo '<img class="image3 width-100" src="images/'.$reqArticlesTrousseSoinCorp[0]['file_article_trousse'].'" alt="slide">'; 
+                          ?>
+                            </br>
+                            <a href="index.php?action=articleTrousse&amp;id=<?= $reqArticlesTrousseSoinCorp[0]['id_article_trousse'] ?>">Voir plus...</a>
+                        </div>
+                        <?php foreach ($next as $articleTrousseSoinCorp) { ?>
+                            <div class="item">
+                                <?php
+                                    echo '<img class="image3 width-100" src="images/'.$articleTrousseSoinCorp['file_article_trousse'].'" alt="slide">'; 
+                                ?>
+                                </br>
+                                <a href="index.php?action=articleTrousse&amp;id=<?= $articleTrousseSoinCorp['id_article_trousse'] ?>">Voir plus...</a>
+                            </div>
+                        <?php } 
+                        $articlesTrousseSoinCorp->closeCursor();?>
+
                     </div>
+                    <a class="left carousel-control" href="#carouselExampleControls1" data-slide="prev">
+                      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                      <span class="sr-only">Précédent</span>
+                    </a>
+                    <a class="right carousel-control" href="#carouselExampleControls1" data-slide="next">
+                      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                      <span class="sr-only">Suivant</span>
+                    </a>
+                </div>
+                                
                 <?php
-                }
-                $articlesTrousseSoinCorp->closeCursor();
+                $reqArticlesTrousseMakeUpYeux=$articlesTrousseMakeUpYeux-> fetchAll();
+                $next = array_slice($reqArticlesTrousseMakeUpYeux, 1);
                 ?>
-                <?php
-                $req1=$articlesTrousseMakeUpYeux-> fetchAll();
-                $req12 = array_slice($req1, 0, 1);
-                foreach ($req12 as $datas)    
-                {
-                ?>
-                    <div class="col-sm-2 news text-center" style="margin-right: 15px; margin-top: 15px; margin-bottom: 15px"/>
-                        <?php
-                        if($datas['file_article_trousse']){
-                            echo '<img src="images/'.$datas['file_article_trousse'].'" class="image3 width-100" alt="image" style="position:relative"/>';
-                        } 
-                        ?> 
-                        </br>
-                        <strong>
-                        <?php
-                        echo $datas['title_article_trousse']; ?>
-                        </strong>
-                        </br>
-                        <a href="index.php?action=articleTrousse&amp;id=<?= $datas['id_article_trousse'] ?>">Lire la suite...</a>
+                <div id="carouselExampleControls2" class="carousel slide col-sm-2" data-ride="carousel" style="margin-right: 45px">
+                    <div class="carousel-inner">
+                        <div class="item active">
+                          <?php
+                              echo '<img class="image3 width-100" src="images/'.$reqArticlesTrousseMakeUpYeux[0]['file_article_trousse'].'" alt="slide">'; 
+                          ?>
+                            </br>
+                            <a href="index.php?action=articleTrousse&amp;id=<?= $reqArticlesTrousseMakeUpYeux[0]['id_article_trousse'] ?>">Voir plus...</a>
+                        </div>
+                        <?php foreach ($next as $articleTrousseMakeUpYeux) { ?>
+                            <div class="item">
+                                <?php
+                                    echo '<img class="image3 width-100" src="images/'.$articleTrousseMakeUpYeux['file_article_trousse'].'" alt="slide">'; 
+                                ?>
+                                </br>
+                                <a href="index.php?action=articleTrousse&amp;id=<?= $articleTrousseMakeUpYeux['id_article_trousse'] ?>">Voir plus...</a>
+                            </div>
+                        <?php } 
+                        $articlesTrousseMakeUpYeux->closeCursor();?>
+
                     </div>
+                    <a class="left carousel-control" href="#carouselExampleControls2" data-slide="prev">
+                      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                      <span class="sr-only">Précédent</span>
+                    </a>
+                    <a class="right carousel-control" href="#carouselExampleControls2" data-slide="next">
+                      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                      <span class="sr-only">Suivant</span>
+                    </a>
+                </div>
+                
                 <?php
-                }
-                $articlesTrousseMakeUpYeux->closeCursor();
-                ?><?php
-                $req1=$articlesTrousseMakeUpLevre-> fetchAll();
-                $req12 = array_slice($req1, 0, 1);
-                foreach ($req12 as $datas)    
-                {
+                $reqArticlesTrousseMakeUpLevre=$articlesTrousseMakeUpLevre-> fetchAll();
+                $next = array_slice($reqArticlesTrousseMakeUpLevre, 1);
                 ?>
-                    <div class="col-sm-2 news text-center" style="margin-right: 15px; margin-top: 15px; margin-bottom: 15px"/>
-                        <?php
-                        if($datas['file_article_trousse']){
-                            echo '<img src="images/'.$datas['file_article_trousse'].'" class="image3 width-100" alt="image" style="position:relative"/>';
-                        } 
-                        ?> 
-                        </br>
-                        <strong>
-                        <?php
-                        echo $datas['title_article_trousse']; ?>
-                        </strong>
-                        </br>
-                        <a href="index.php?action=articleTrousse&amp;id=<?= $datas['id_article_trousse'] ?>">Lire la suite...</a>
+                <div id="carouselExampleControls3" class="carousel slide col-sm-2" data-ride="carousel" style="margin-right: 45px">
+                    <div class="carousel-inner">
+                        <div class="item active">
+                          <?php
+                              echo '<img class="image3 width-100" src="images/'.$reqArticlesTrousseMakeUpLevre[0]['file_article_trousse'].'" alt="slide">'; 
+                          ?>
+                            </br>
+                            <a href="index.php?action=articleTrousse&amp;id=<?= $reqArticlesTrousseMakeUpLevre[0]['id_article_trousse'] ?>">Voir plus...</a>
+                        </div>
+                        <?php foreach ($next as $articleTrousseMakeUpLevre) { ?>
+                            <div class="item">
+                                <?php
+                                    echo '<img class="image3 width-100" src="images/'.$articleTrousseMakeUpLevre['file_article_trousse'].'" alt="slide">'; 
+                                ?>
+                                </br>
+                                <a href="index.php?action=articleTrousse&amp;id=<?= $articleTrousseMakeUpLevre['id_article_trousse'] ?>">Voir plus...</a>
+                            </div>
+                        <?php } 
+                        $articlesTrousseMakeUpLevre->closeCursor();?>
+
                     </div>
+                    <a class="left carousel-control" href="#carouselExampleControls3" data-slide="prev">
+                      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                      <span class="sr-only">Précédent</span>
+                    </a>
+                    <a class="right carousel-control" href="#carouselExampleControls3" data-slide="next">
+                      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                      <span class="sr-only">Suivant</span>
+                    </a>
+                </div>
+                
                 <?php
-                }
-                $articlesTrousseMakeUpLevre->closeCursor();
-                ?><?php
-                $req1=$articlesTrousseMakeUpTeint-> fetchAll();
-                $req12 = array_slice($req1, 0, 1);
-                foreach ($req12 as $datas)    
-                {
+                $reqArticlesTrousseMakeUpTeint=$articlesTrousseMakeUpTeint-> fetchAll();
+                $next = array_slice($reqArticlesTrousseMakeUpTeint, 1);
                 ?>
-                    <div class="col-sm-2 news text-center" style="margin-right: 15px; margin-top: 15px; margin-bottom: 15px"/>
-                        <?php
-                        if($datas['file_article_trousse']){
-                            echo '<img src="images/'.$datas['file_article_trousse'].'" class="image3 width-100" alt="image" style="position:relative"/>';
-                        } 
-                        ?> 
-                        </br>
-                        <strong>
-                        <?php
-                        echo $datas['title_article_trousse']; ?>
-                        </strong>
-                        </br>
-                        <a href="index.php?action=articleTrousse&amp;id=<?= $datas['id_article_trousse'] ?>">Lire la suite...</a>
+                <div id="carouselExampleControls4" class="carousel slide col-sm-2" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="item active">
+                          <?php
+                              echo '<img class="image3 width-100" src="images/'.$reqArticlesTrousseMakeUpTeint[0]['file_article_trousse'].'" alt="slide">'; 
+                          ?>
+                            </br>
+                            <a href="index.php?action=articleTrousse&amp;id=<?= $reqArticlesTrousseMakeUpTeint[0]['id_article_trousse'] ?>">Voir plus...</a>
+                        </div>
+                        <?php foreach ($next as $articleTrousseMakeUpTeint) { ?>
+                            <div class="item">
+                                <?php
+                                    echo '<img class="image3 width-100" src="images/'.$articleTrousseMakeUpTeint['file_article_trousse'].'" alt="slide">'; 
+                                ?>
+                                </br>
+                                <a href="index.php?action=articleTrousse&amp;id=<?= $articleTrousseMakeUpTeint['id_article_trousse'] ?>">Voir plus...</a>
+                            </div>
+                        <?php } 
+                        $articlesTrousseMakeUpTeint->closeCursor();?>
+
                     </div>
-                <?php
-                }
-                $articlesTrousseMakeUpTeint->closeCursor();
-                ?>
+                    <a class="left carousel-control" href="#carouselExampleControls4" data-slide="prev">
+                      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                      <span class="sr-only">Précédent</span>
+                    </a>
+                    <a class="right carousel-control" href="#carouselExampleControls4" data-slide="next">
+                      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                      <span class="sr-only">Suivant</span>
+                    </a>
+                </div>
+                
             </div>
         </section>
     </div>
