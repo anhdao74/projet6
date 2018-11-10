@@ -4,20 +4,27 @@ class ArticlesTrousseController
 {
 function addArticleTrousse()
     {
-        $articleTrousseManager = new ArticleTrousseManager();
-        $articleTroussesTrousseTrousse= $articleTrousseManager->getArticlesTrousse();
-		if (empty($_POST['title']) && empty($_POST['content']) && empty(($_FILES))) 
+        $userSession = new UserSession();
+        $logged = $userSession->isLogged();
+        
+        if ($logged===False)
+        {
+            $template = 'connexion';
+            $title = 'Page de connexion';
+            
+            require('view/layoutView.phtml'); 
+        } else {
+            if (empty($_POST['title']) || empty($_POST['content']) || empty($_FILES))
             {
-                $verif = new VerifyId();
-                $articleTrousse = $verif-> getAddArticleIdTrousse(); 
                 $req = new FlashMessageSession();
                 $flash = $req->asMessage();
                 $flash = $req->setFlash('Vous n\'avez pas rempli tous les champs');
-                header('Location: index.php?action=showAdmin');
-                exit();  
-            }            
-        else 
-            {
+
+                $template = 'postArticleTrousse';
+                $title = "Page ajout d'article trousse";
+
+                require('view/layoutView.phtml'); 
+            } else {
                 $fileName = $_FILES['file']['name'];
                 $fileExtension = strrchr($fileName, ".");
                 $fileTmpName = $_FILES['file']['tmp_name'];
@@ -33,9 +40,10 @@ function addArticleTrousse()
                 $affectedLines= $articleTrousseManager->postArticleTrousse(strip_tags($_POST['title']), $_POST['content'], $_FILES['file']['name'], $_POST['maliste']);
                 $req = new FlashMessageSession();
                 $flash = $req->setFlash('Le chapitre a bien été ajouté');
-            	header('Location: index.php?action=showAdmin');
-               	exit();
-            }    
+                header('Location: index.php?action=showAdmin');
+                exit();
+            }  
+        }
     }
     
 function editArticleTrousse()

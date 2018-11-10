@@ -139,6 +139,7 @@ p
 .image2{
     height: 350px;
     width: auto;
+    max-width: 350px;
 }
 
 .image3{
@@ -146,9 +147,9 @@ p
     width: 150px;
 }
 
-.images{
-    height: 150px;
-    width: 150px;
+.image4{
+    height: 350px;
+    width: auto;
 }
 
 .minview
@@ -351,6 +352,10 @@ body
 }
 
 @media screen and (min-width: 1400px) {
+    .image4 {
+        top:250px;
+        left:150px;
+    }
     .image2 {
         top:250px;
         left:150px;
@@ -373,6 +378,10 @@ body
 }
 
 @media screen and (max-width: 1400px) {
+    .image4 {
+        top:350px;
+        left:50px;
+    }
     .image2 {
         top:350px;
         left:50px;
@@ -403,6 +412,12 @@ body
 }
 
 @media screen and (max-width: 1200px) {
+    .image4 {
+        top:350px;
+        left:50px;
+        width: 450px;
+        height: 350px;
+    }
     .image2 {
         top:350px;
         left:50px;
@@ -434,6 +449,12 @@ body
 }
     
 @media screen and (max-width: 940px) {
+    .image4 {
+        top:350px;
+        left:50px;
+        width: 350px;
+        height: 250px;
+    }
     .image2 {
         top:350px;
         left:50px;

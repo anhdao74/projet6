@@ -65,30 +65,7 @@
         ?>
         <br>
             <section class="col-sm-10">
-                <h2 class="ajout"> Ajouter un nouvel article </h2>
-
-                <form action='index.php?action=addArticle' method='post' enctype='multipart/form-data'>
-                    
-                <div>
-                    <label for="title">Titre chapitre</label><br />
-                    <input type="text" id="title" name="title">
-                </div>
-                <div>
-                    <label for="content">Texte</label><br />
-                    <textarea id="#mytextarea" name="content"></textarea>
-                </div>
-                <div>
-                    <label for="file">Fichier (tous formats | max. 1 Mo) :</label><br />
-                    <input type="file" name="file" id="file" /><br />
-                </div>
-                <div>
-                    <label for="file">Fichier (tous formats | max. 1 Mo) :</label><br />
-                    <input type="file" name="file2" id="file2" /><br />
-                </div> 
-                <div>
-                    <button class="btn btn-primary btn-primary"><span class="glyphicon glyphicon-floppy-saved"></span> Enregistrer</button>
-                </div>
-                </form>
+                <h2 class="ajout"><a href ="index.php?action=addArticle"> Ajouter un nouvel article </a></h2>
             </section>
         </br><br><br>
         
@@ -312,36 +289,7 @@
         </section>
         
         <section class="col-sm-10">
-            <h2 class="ajout"> Ajouter un article dans ma trousse </h2>
-
-            <form action='index.php?action=addArticleTrousse' method='post' enctype='multipart/form-data'>
-
-            <div>
-                <label for="type">Type article</label><br />
-                <select name="maliste" id="type">
-                    <option value="1" selected>Soin visage</option>
-                    <option value="2">Soin corp</option>
-                    <option value="3">Make-up yeux</option>
-                    <option value="4">Make-up levre</option>
-                    <option value="5">Make-up teint</option>
-                </select>
-            </div>
-            <div>
-                <label for="title">Titre chapitre</label><br />
-                <input type="text" id="title" name="title">
-            </div>
-            <div>
-                <label for="content">Texte</label><br />
-                <textarea id="#mytextarea" name="content"></textarea>
-            </div>
-            <div>
-                <label for="file">Fichier (tous formats | max. 1 Mo) :</label><br />
-                <input type="file" name="file" id="file" /><br />
-            </div>
-            <div>
-                <button class="btn btn-primary btn-primary"><span class="glyphicon glyphicon-floppy-saved"></span> Enregistrer</button>
-            </div>
-            </form>
+            <h2 class="ajout"><a href ="index.php?action=addArticleTrousse">Ajouter un article dans ma trousse</a></h2>
         </section>
     </div>
     <script>
