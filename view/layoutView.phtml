@@ -75,15 +75,21 @@
         <header>
             <nav class="navbar blog pull-right">
                 <div class="collapse navbar-collapse" id="navbarNav" style="padding:0; padding-top:15px">
-                    <a class="nav-link" href="index.php">Accueil &nbsp &nbsp <span class="sr-only">(current)</span></a>
-                    <a class="nav-link" href="index.php?action=articles">Articles &nbsp &nbsp</a>
-                    <a class="nav-link" href="index.php?action=articlesTrousse">Ma trousse &nbsp &nbsp &nbsp</a>
-                    <a class="nav-link" href="#"><span class="glyphicon glyphicon-search"></a>
+                    <a class="nav-link" style="margin-right:15px" href="index.php">Accueil<span class="sr-only">(current)</span></a>
+                    <a class="nav-link"style="margin-right:15px" href="index.php?action=articles">Articles</a>
+                    <a class="nav-link" style="margin-right:22px" href="index.php?action=articlesTrousse">Ma trousse</a>
+                    <a class="nav-link" href="#"><span class="glyphicon glyphicon-search" id="icon_rechercher"></a>
+                    <form action='index.php?action=search' method='post'>
+                        <div class="input-group" id="rechercher">
+                            <input type="text"  name="rechercher">
+                            <input class="btn btn-primary btn-sm" value="OK" type="submit" name="submit" id="envoyer">
+                        </div>
+                    </form>
                 </div>
             </nav>
             <nav class="navbar blog-nav pull-right">
                 <div class="collapse navbar-collapse" id="navbarNav">
-                    <a class="nav-link" href="#" id="reseauxSociaux">Réseaux sociaux &nbsp &nbsp</a>
+                    <a class="nav-link" style="margin-bottom:20px" href="#" id="reseauxSociaux">Réseaux sociaux</a>
                     <a class="nav-link " href="#" id="aboutMe">A propos</a>
                 </div>
             </nav>
@@ -170,7 +176,12 @@
             $("#close2").click(function() {
                 $("#about").addClass("hidden");
             });
-            
+            $("#icon_rechercher").ready(function() {
+                $("#rechercher").addClass("hidden");
+            });
+            $("#icon_rechercher").click(function() {
+                $("#rechercher").removeClass("hidden");
+            });
         </script>
         
     </body>

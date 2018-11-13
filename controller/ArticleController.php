@@ -16,11 +16,11 @@ function addArticle()
             if (empty($_POST['title']) || empty($_POST['content']) || empty($_FILES))
             {
                 $req = new FlashMessageSession();
-                $flash = $req->asMessage();
-                $flash = $req->setFlash('Vous n\'avez pas rempli tous les champs');
-
+                $flash = $req->setFlash('A vous de jouer!');
+                
                 $template = 'postArticle';
                 $title = "Page ajout d'article"; 
+                require('view/layoutView.phtml');
             } else {
                 
                 $fileName = $_FILES['file']['name'];
@@ -43,11 +43,6 @@ function addArticle()
                 header('Location: index.php?action=showAdmin');
                 exit();
             }
-                
-            $template = 'postArticle';
-            $title = "Page ajout d'article";
-
-            require('view/layoutView.phtml');
         }
     }
     

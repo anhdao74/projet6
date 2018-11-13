@@ -23,7 +23,7 @@
         <form action='index.php?action=addArticleTrousse' method='post' enctype='multipart/form-data'>
 
             <div>
-                <label for="type">Type article</label><br />
+                <label for="type">Type article(*)</label><br />
                 <select name="maliste" id="type">
                     <option value="1" selected>Soin visage</option>
                     <option value="2">Soin corp</option>
@@ -33,20 +33,40 @@
                 </select>
             </div>
             <div>
-                <label for="title">Titre chapitre</label><br />
-                <input type="text" id="title" name="title">
+                <label for="title">Titre chapitre(*)</label><br />
+                <input type="text" id="title" name="title" class="obligatoire">
             </div>
             <div>
-                <label for="content">Texte</label><br />
+                <label for="content">Texte(*)</label><br />
                 <textarea id="#mytextarea" name="content"></textarea>
             </div>
             <div>
-                <label for="file">Fichier (tous formats | max. 1 Mo) :</label><br />
-                <input type="file" name="file" id="file" /><br />
+                <label for="file">Fichier (tous formats | max. 1 Mo) (*):</label><br />
+                <input type="file" name="file" id="file" class="obligatoire"/><br />
             </div>
             <div>
-                <button class="btn btn-primary btn-primary"><span class="glyphicon glyphicon-floppy-saved"></span> Enregistrer</button>
+                <span class="obligatoires" id="champs_obligatoires">* Champs obligatoires</span>
+                <input class="btn btn-primary btn-primary" value="Enregistrer" type="submit" name="submit" id="envoyer">
             </div>
         </form>
     </section>
+    <script>
+    $(document).ready(function() {
+        /* on cache D'ABORD le BOUTON SUBMIT */
+        $("input[type='submit']").hide();
+        /* on teste les champs obligatoires */
+        $(".obligatoire").change(function() {
+            // Action s'exécutant des qu'une valeur de tes inputs est changées
+            var estRempli = true;
+            /* tous les champs obligatoires doivent être remplis (sinon -> false) */
+            $(".obligatoire").each(function() {
+                if ($(this).val().length <= 1) {
+                    estRempli = false;
+                }
+            });
+            if(estRempli){ $("input[type='submit']").show(); }
+                    else{ $("input[type='submit']").hide(); }
+        });
+    });
+    </script>
 </body>

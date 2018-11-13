@@ -14,6 +14,13 @@ class Routeur
                 return [$controller, 'home'];
             
             }
+            if ($_GET['action'] == 'search') 
+            { 
+                $controller = new SearchController;
+                
+                return [$controller, 'search'];
+            
+            }
             elseif ($_GET['action'] == 'article') 
             {
                 $controller = new HomeController;

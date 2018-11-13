@@ -126,6 +126,11 @@ p
   line-height: 16px;
 }
 
+img:hover {
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+}
+
 .image{
     height: 650px;
     width: 550px;
