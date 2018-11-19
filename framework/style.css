@@ -424,10 +424,7 @@ body
         height: 350px;
     }
     .image2 {
-        top:350px;
-        left:50px;
-        width: 450px;
-        height: 350px;
+        display:none;
     }
     .image1 {
         width: 300px;
@@ -461,10 +458,7 @@ body
         height: 250px;
     }
     .image2 {
-        top:350px;
-        left:50px;
-        width: 350px;
-        height: 250px;
+        display:none;
     }
     .image1 {
         width: 200px;
@@ -491,6 +485,9 @@ body
 }
 
 @media screen and (max-width: 768px) {
+    .image4 {
+       display:none;
+    }
     .image2 {
        display:none;
     }
