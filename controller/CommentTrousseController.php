@@ -39,7 +39,7 @@ function addCommentTrousse()
     {
         if (isset($_POST['author']) && isset($_POST['content']))
         {
-            $affectedLines = $commentTrousseManager->postComment(strip_tags($_POST['id']),strip_tags($_POST['author']), ($_POST['content']));
+            $affectedLines = $commentTrousseManager->postComment(strip_tags($_POST['id']),strip_tags($_POST['author']), strip_tags($_POST['content']));
             $req = new FlashMessageSession();
             $message = $req->setFlash('Votre commentaire a bien été ajouté');
             $flash = $req->asMessage();
@@ -62,27 +62,26 @@ function addCommentTrousse()
     function removeCommentTrousse()
     {
         $verif = new VerifyId();
-        $comment = $verif-> getCommentTrousseId();
+        $commentTrousse = $verif-> getCommentTrousseId();
         $commentTrousseManager = new CommentTrousseManager();  
         $removeLine=$commentTrousseManager->cancelComment(strip_tags($_GET['id']));
         $req = new FlashMessageSession();
         $flash = $req->asMessage();
         $flash = $req->setFlash('Le commentaire a bien été supprimé');
-        header('Location: index.php?action=editCommentArticleTrousse&articleId='. strip_tags($_POST['id']));
+        header('Location: index.php?action=showAdmin');
         exit();
                
     }
     function signaledCommentTrousse()
     {
         $verif = new VerifyId();
-        $comment = $verif-> getCommentId();
+        $commentTrousse = $verif-> getCommentTrousseId();
         $commentTrousseManager = new CommentTrousseManager();
-        $signaled = $commentTrousseManager->getSignaledComment(strip_tags($_GET['id']));
+        $signaled_trousse = $commentTrousseManager->getSignaledComment(strip_tags($_GET['id']));
         $req = new FlashMessageSession();
         $flash = $req->asMessage();
         $flash = $req->setFlash('Votre message a bien été signalé');
-        
-        header('Location: index.php?action=article&id=' . strip_tags($comment['articleId']));
+        header('Location: index.php?action=articleTrousse&id=' . strip_tags($commentTrousse['id_article_trousse']));
         exit();
                         
     }

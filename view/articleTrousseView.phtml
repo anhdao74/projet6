@@ -43,7 +43,7 @@ if ($flash==true)
     </div>
     
     <div class="container text-center">
-        <h4 id = "showComments"> Voir les commentaires </h4>
+        <h3 id = "showComments"> Voir les commentaires </h3>
         <div class="wrap hidden" id="commentShowed">
             <?php
                     while ($data=$comments-> fetch())
@@ -59,8 +59,7 @@ if ($flash==true)
                         <?php echo '<span class="text-center" id="commentContent">'.$data['content_trousse'].'</span>'?>
                         
                     </div>
-
-                    <form action="index.php?action=signaledComment&amp;id=<?= $data['id_trousse'] ?>" method='post'>
+                    <form action="index.php?action=signaledCommentTrousse&amp;id=<?= $data['id_trousse'] ?>" method='post'>
                         <input type="hidden" name="id" value="<?=$articleTrousse['id_article_trousse']?>"/> 
                     <button class="btn btn-xs btn-warning" type="submit"><span class="glyphicon glyphicon-warning-sign"></span> Signaler</button>
                     </form>

@@ -134,6 +134,12 @@ class Routeur
                 $commentController = new CommentController;
                 return [$commentController, 'signaledComment'];
             }
+            elseif ($_GET['action'] == 'signaledCommentTrousse') 
+            {
+                $commentTrousseManager = new CommentTrousseManager;
+                $commentTrousseController = new CommentTrousseController;
+                return [$commentTrousseController, 'signaledCommentTrousse'];
+            }
             elseif ($_GET['action'] == 'removeArticleTrousse') 
             {
                 $articleTrousseManager = new ArticleTrousseManager;

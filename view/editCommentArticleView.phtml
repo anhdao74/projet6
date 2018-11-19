@@ -19,6 +19,11 @@
                         le <?= $data['creation_date_fr'] ?>
                     </h4>
                     <?php echo '<span class="text-center" id="commentContent">'.$data['content'].'</span>'?>
+                 <?php
+                    if ($data['signaled'] == 1)
+                    { ?>
+                        <br><p class="flash text-center" style="color:red"><? echo 'Ce commentaire a été signalé';?></p>
+                    <?php }?>
                 </div>
 
                 <form action="index.php?action=removeComment&amp;id=<?= $data['id'] ?>" method='post'>

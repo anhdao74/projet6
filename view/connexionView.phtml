@@ -39,11 +39,9 @@
                             <form action='index.php?action=verifyController' method='POST'>
         			<p><label><strong>Identifiant(*)</strong></label><input type="action" name="login"></p>
         			<p><label><strong>Mot de passe(*)</strong></label><input type="password" name="pass"></p>
-                                <?php if (empty($_POST)) {
-                                    echo "* Champs obligatoires";
-                                } else { ?>
+                               
                                     <input class="btn btn-primary btn-primary" value="Envoyer" type="submit" name="submit">
-                                <?php } ?>
+                                
                             </form>
         		</div>
         	    </section>

@@ -38,7 +38,7 @@ class CommentController
                 {
                 if (!empty($_POST['author']) && !empty($_POST['content']))
                 {
-                    $affectedLines = $commentManager->postComment(strip_tags($_POST['id']),strip_tags($_POST['author']), ($_POST['content']));
+                    $affectedLines = $commentManager->postComment(strip_tags($_POST['id']),strip_tags($_POST['author']), strip_tags($_POST['content']));
                     $req = new FlashMessageSession();
                     $message = $req->setFlash('Votre commentaire a bien été ajouté');
                     $flash = $req->asMessage();
@@ -69,7 +69,7 @@ class CommentController
         $req = new FlashMessageSession();
         $flash = $req->asMessage();
         $flash = $req->setFlash('Le commentaire a bien été supprimé');
-        header('Location: index.php?action=editCommentArticle&articleId='. strip_tags($_POST['id']));
+        header('Location: index.php?action=showAdmin');
         exit();
                
     }
