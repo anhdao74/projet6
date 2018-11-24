@@ -9,6 +9,7 @@
         </br></br>
         <div class="" id="commentShowed">
         <?php
+        if ($commentsTrousse-> fetch()) {
             while ($data=$commentsTrousse-> fetch()) {
                 if (!isset($data)) {                    
                     echo 'Auncun commentaire';
@@ -32,7 +33,10 @@
                 </form> 
                 <?php }
             }
-            $commentsTrousse->closeCursor(); ?>
+            $commentsTrousse->closeCursor(); 
+        } else {
+            echo 'Auncun commentaire';
+        }?>
         </div>
     </div>
 </body>

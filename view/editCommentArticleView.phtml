@@ -9,10 +9,9 @@
         </br></br>
         <div class="" id="commentShowed">
         <?php
-            while ($data=$comments-> fetch()) {
-                if (!isset($data)) {                    
-                    echo 'Auncun commentaire';
-                } else { ?>
+        if ($comments-> fetch()) {
+            while ($data=$comments-> fetch()) { ?>
+               
                 <div class="news"/>
                     <h4>
                         <?php echo $data['author'] ?>
@@ -31,8 +30,11 @@
                 <button class="btn btn-xs btn-danger" type="submit"><span class="glyphicon glyphicon-warning-sign"></span> Supprimer</button>
                 </form> 
                 <?php }
-            }
-            $comments->closeCursor(); ?>
+            
+            $comments->closeCursor(); 
+        } else {
+            echo 'Auncun commentaire';
+        }?>
         </div>
     </div>
 </body>

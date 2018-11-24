@@ -33,6 +33,7 @@ class ConnexionController
             $_SESSION['user'] = FALSE;
             $req = new FlashMessageSession();
             $flash = $req->setFlash('Mot de passe ou identifiant erroné, vérifiez');
+            $flash = $req->asMessage();
             $template = 'connexion';
             $title = 'Page de connexion';
         
