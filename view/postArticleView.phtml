@@ -17,7 +17,7 @@
             </div>
             <div>
                 <label for="content">Texte(*)</label><br />
-                <textarea id="mytextarea" name="content" class=""></textarea>
+                <textarea id="mytextarea" name="content"></textarea>
             </div>
             <div>
                 <label for="file">Fichier (tous formats | max. 1 Mo) (*):</label><br />
@@ -35,6 +35,7 @@
     </section>
     
     <script>
+   
     $(document).ready(function() {
         /* on cache D'ABORD le BOUTON SUBMIT */
         $("input[type='submit']").hide();
@@ -44,7 +45,10 @@
             var estRempli = true;
             /* tous les champs obligatoires doivent être remplis (sinon -> false) */
             $(".obligatoire").each(function() {
+               // console.log($(this).val().length <= 1 && tinymce.activeEditor.getContent() == "");
                 if ($(this).val().length <= 1) {
+                    estRempli = false;
+                } if (tinymce.activeEditor.getContent() == "") {
                     estRempli = false;
                 }
             });
