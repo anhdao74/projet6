@@ -148,8 +148,11 @@ img:hover {
 }
 
 .image3{
-    height: 150px;
-    width: 150px;
+    height: 100px;
+    width: 100px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 25px;
 }
 
 .image4{
@@ -157,6 +160,15 @@ img:hover {
     width: auto;
 }
 
+.carousel {
+    height: 150px;
+    margin-bottom: 15px;
+}
+
+.carousel1 {
+    height: 150px;
+    margin-bottom: 15px;
+}
 .minview
 {
   margin-bottom: 100px;
@@ -193,6 +205,27 @@ body
 .about1
 {
   color:white !important;
+}
+
+#visage {
+    text-align: center;
+    padding: 0;
+}
+#corp {
+    text-align: center;
+    padding: 0;
+}
+#yeux {
+    text-align: center;
+    padding: 0;
+}
+#levre {
+    text-align: center;
+    padding: 0;
+}
+#teint {
+    text-align: center;
+    padding: 0;
 }
 
 .mobile-social-share {
@@ -348,6 +381,11 @@ body
     .mobile-social-share h3 {
         font-size: 15px;
     }
+
+    .image{
+	    height: 450px;
+	    width: auto;
+	}
 }
 
 @media (max-width : 238px) {
@@ -357,6 +395,10 @@ body
 }
 
 @media screen and (min-width: 1400px) {
+    .image{
+        height: 650px;
+        max-width: : 550px;
+    }
     .image4 {
         top:250px;
         left:150px;
@@ -395,6 +437,12 @@ body
         width: 350px;
         height: 400px;
     }
+    .vl3 {
+        height: 400px;
+    }
+    .vl {
+        display: none;
+    }
     .nav-link1 {
         top: 250px;
         left:200px;
@@ -428,6 +476,9 @@ body
     }
     .image1 {
         width: 300px;
+        height: 400px;
+    }
+    .vl3 {
         height: 400px;
     }
     .nav-link1 {
@@ -464,6 +515,9 @@ body
         width: 200px;
         height: 400px;
     }
+    .vl3 {
+        height: 400px;
+    }
     .nav-link1 {
         top: 250px;
         left:200px;
@@ -482,9 +536,19 @@ body
     .carousel {
         margin-right: 15px
     }
+    li.col-xs-2 {
+       padding-right: 0; 
+       padding-left: 0;
+    }
 }
 
 @media screen and (max-width: 768px) {
+    .image{
+	    height: 350px;
+	    width: auto;
+	    position: absolute;
+        max-width: 400px;
+	}
     .image4 {
        display:none;
     }
@@ -495,21 +559,71 @@ body
         width: 350px;
         height: 400px;
     }
+    .image3 {
+        height: 120px;
+    }
     .nav-link1 {
         display:none;
     }
     .content{
-        top:40px;
-        left:170px
+        position: relative;
     }
     .content2 {
         display:none;
     }
     .carousel1 {
-        margin-right: 5px
+    	margin-left:0px;
+        margin-right: 5px;
+        width:45%;
     }
     .carousel {
-        margin-right: 5px
+        margin-right: 5px;
+        width:45%;
+        height:150px;
+    }
+    .vl {
+       display:none; 
+    }
+    .vl3 {
+       display:none; 
+    }
+    .vl2 {
+       display:none; 
+    }
+    .footer {
+       display:none;  
+    }
+    #visage {
+        font-size: 10px;
+        text-align: center;
+        padding: 0;
+    }
+    #corp {
+        font-size: 10px;
+        text-align: center;
+        padding: 0;
+    }
+    #yeux {
+        font-size: 10px;
+        text-align: center;
+        padding: 0;
+    }
+    #levre {
+        font-size: 10px;
+        text-align: center;
+        padding: 0;
+    }
+    #teint {
+        font-size: 10px;
+        text-align: center;
+        padding: 0;
+    }
+    li.col-xs-2 {
+       padding-right: 0; 
+       padding-left: 0;
+    }
+    .collapse {
+        display: block;
     }
     
 }

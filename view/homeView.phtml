@@ -29,7 +29,7 @@
                     <div class="col-sm-12 news text-center" style="margin-right: 15px; margin-top: 15px; margin-bottom: 15px"/>
                             <?php
                             if($data['file']){ ?>
-                                <a href="index.php?action=article&amp;id=<?= $data['id'] ?>"><img src="images/<?=$data['file']?>" class="image width-100 pull-right" alt="image" style="position:relative"/></a>;
+                                <a href="index.php?action=article&amp;id=<?= $data['id'] ?>"><img src="images/<?=$data['file']?>" class="image width-100 pull-right" alt="image" style="position:relative"/></a>
                             <?php } 
                             if($data['file2']){
                                 echo '<img src="images/'.$data['file2'].'" class="image4 width-100" alt="image2" style="position: absolute"/>';
@@ -65,7 +65,7 @@
                     <div class="col-xs-12 col-sm-4 news text-center"/>
                         <?php
                         if($data['file']){ ?>
-                            <a href="index.php?action=article&amp;id=<?= $data['id'] ?>"><img src="images/<?=$data['file']?>" class="image1 width-100" alt="image" style="position:relative"/></a>;
+                            <a href="index.php?action=article&amp;id=<?= $data['id'] ?>"><img src="images/<?=$data['file']?>" class="image1 width-100" alt="image" style="position:relative"/></a>
                         <?php } 
                         ?> 
                         <a class="content2" class="nav-link" href="index.php?action=articles"style="position: absolute; writing-mode: tb-rl; text-decoration: underline wavy;">Articles</a>
@@ -92,27 +92,23 @@
         <section class="row1">
             <a class="text-center" href="index.php?action=articlesTrousse&amp"><h3>Ma trousse</h3></a>
             </br></br>
-            <div class="col-sm-12">
+            <div class="col-sm-12 class_carousell">
                 <?php
                 $reqArticlesTrousseSoinVisage=$articlesTrousseSoinVisage-> fetchAll();
                 $next = array_slice($reqArticlesTrousseSoinVisage, 1);
                 ?>
-                <div id="carouselExampleControls" class="carousel1 slide col-xs-6 col-sm-2" data-ride="carousel">
+                <div id="carouselExampleControls" class="carousel1 slide col-xs-5 col-sm-2" data-ride="carousel">
                     <div class="carousel-inner">
                         <div class="item active">
-                          <?php
-                              echo '<img class="image3 width-100" src="images/'.$reqArticlesTrousseSoinVisage[0]['file_article_trousse'].'" alt="slide">'; 
-                          ?>
-                            </br>
-                            <a href="index.php?action=articleTrousse&amp;id=<?= $reqArticlesTrousseSoinVisage[0]['id_article_trousse'] ?>">Voir plus...</a>
+                            <a href="index.php?action=articleTrousse&amp;id=<?=$reqArticlesTrousseSoinVisage[0]['id_article_trousse']?>">
+                                <img src="images/<?=$reqArticlesTrousseSoinVisage[0]['file_article_trousse']?>" class="image3 width-100" alt="slide">
+                            </a>
                         </div>
                         <?php foreach ($next as $articleTrousseSoinVisage) { ?>
                             <div class="item">
-                                <?php
-                                    echo '<img class="image3 width-100" src="images/'.$articleTrousseSoinVisage['file_article_trousse'].'" alt="slide">'; 
-                                ?>
-                                </br>
-                                <a href="index.php?action=articleTrousse&amp;id=<?= $articleTrousseSoinVisage['id_article_trousse'] ?>">Voir plus...</a>
+                                <a href="index.php?action=articleTrousse&amp;id=<?=$articleTrousseSoinVisage['id_article_trousse']?>">
+                                    <img src="images/<?=$articleTrousseSoinVisage['file_article_trousse']?>" class="image3 width-100" alt="slide">
+                                </a>
                             </div>
                         <?php } 
                         $articlesTrousseSoinVisage->closeCursor();?>
@@ -132,22 +128,18 @@
                 $reqArticlesTrousseSoinCorp=$articlesTrousseSoinCorp-> fetchAll();
                 $next = array_slice($reqArticlesTrousseSoinCorp, 1);
                 ?>
-                <div id="carouselExampleControls1" class="carousel slide col-xs-6 col-sm-2" data-ride="carousel">
+                <div id="carouselExampleControls1" class="carousel slide col-xs-5 col-sm-2" data-ride="carousel">
                     <div class="carousel-inner">
                         <div class="item active">
-                          <?php
-                              echo '<img class="image3 width-100" src="images/'.$reqArticlesTrousseSoinCorp[0]['file_article_trousse'].'" alt="slide">'; 
-                          ?>
-                            </br>
-                            <a href="index.php?action=articleTrousse&amp;id=<?= $reqArticlesTrousseSoinCorp[0]['id_article_trousse'] ?>">Voir plus...</a>
+                            <a href="index.php?action=articleTrousse&amp;id=<?=$reqArticlesTrousseSoinCorp[0]['id_article_trousse']?>">
+                                <img src="images/<?=$reqArticlesTrousseSoinCorp[0]['file_article_trousse']?>" class="image3 width-100" alt="slide">
+                            </a>
                         </div>
                         <?php foreach ($next as $articleTrousseSoinCorp) { ?>
                             <div class="item">
-                                <?php
-                                    echo '<img class="image3 width-100" src="images/'.$articleTrousseSoinCorp['file_article_trousse'].'" alt="slide">'; 
-                                ?>
-                                </br>
-                                <a href="index.php?action=articleTrousse&amp;id=<?= $articleTrousseSoinCorp['id_article_trousse'] ?>">Voir plus...</a>
+                                <a href="index.php?action=articleTrousse&amp;id=<?=$articleTrousseSoinCorp['id_article_trousse']?>">
+                                    <img src="images/<?=$articleTrousseSoinCorp['file_article_trousse']?>" class="image3 width-100" alt="slide">
+                                </a>
                             </div>
                         <?php } 
                         $articlesTrousseSoinCorp->closeCursor();?>
@@ -167,22 +159,18 @@
                 $reqArticlesTrousseMakeUpYeux=$articlesTrousseMakeUpYeux-> fetchAll();
                 $next = array_slice($reqArticlesTrousseMakeUpYeux, 1);
                 ?>
-                <div id="carouselExampleControls2" class="carousel slide col-xs-6 col-sm-2" data-ride="carousel">
+                <div id="carouselExampleControls2" class="carousel slide col-xs-5 col-sm-2" data-ride="carousel">
                     <div class="carousel-inner">
                         <div class="item active">
-                          <?php
-                              echo '<img class="image3 width-100" src="images/'.$reqArticlesTrousseMakeUpYeux[0]['file_article_trousse'].'" alt="slide">'; 
-                          ?>
-                            </br>
-                            <a href="index.php?action=articleTrousse&amp;id=<?= $reqArticlesTrousseMakeUpYeux[0]['id_article_trousse'] ?>">Voir plus...</a>
+                            <a href="index.php?action=articleTrousse&amp;id=<?=$reqArticlesTrousseMakeUpYeux[0]['id_article_trousse']?>">
+                                <img src="images/<?=$reqArticlesTrousseMakeUpYeux[0]['file_article_trousse']?>" class="image3 width-100" alt="slide">
+                            </a>
                         </div>
                         <?php foreach ($next as $articleTrousseMakeUpYeux) { ?>
                             <div class="item">
-                                <?php
-                                    echo '<img class="image3 width-100" src="images/'.$articleTrousseMakeUpYeux['file_article_trousse'].'" alt="slide">'; 
-                                ?>
-                                </br>
-                                <a href="index.php?action=articleTrousse&amp;id=<?= $articleTrousseMakeUpYeux['id_article_trousse'] ?>">Voir plus...</a>
+                                <a href="index.php?action=articleTrousse&amp;id=<?=$articleTrousseMakeUpYeux['id_article_trousse']?>">
+                                    <img src="images/<?=$articleTrousseMakeUpYeux['file_article_trousse']?>" class="image3 width-100" alt="slide">
+                                </a>
                             </div>
                         <?php } 
                         $articlesTrousseMakeUpYeux->closeCursor();?>
@@ -202,22 +190,18 @@
                 $reqArticlesTrousseMakeUpLevre=$articlesTrousseMakeUpLevre-> fetchAll();
                 $next = array_slice($reqArticlesTrousseMakeUpLevre, 1);
                 ?>
-                <div id="carouselExampleControls3" class="carousel slide col-xs-6 col-sm-2" data-ride="carousel">
+                <div id="carouselExampleControls3" class="carousel slide col-xs-5 col-sm-2" data-ride="carousel">
                     <div class="carousel-inner">
                         <div class="item active">
-                          <?php
-                              echo '<img class="image3 width-100" src="images/'.$reqArticlesTrousseMakeUpLevre[0]['file_article_trousse'].'" alt="slide">'; 
-                          ?>
-                            </br>
-                            <a href="index.php?action=articleTrousse&amp;id=<?= $reqArticlesTrousseMakeUpLevre[0]['id_article_trousse'] ?>">Voir plus...</a>
+                            <a href="index.php?action=articleTrousse&amp;id=<?=$reqArticlesTrousseMakeUpLevre[0]['id_article_trousse']?>">
+                                <img src="images/<?=$reqArticlesTrousseMakeUpLevre[0]['file_article_trousse']?>" class="image3 width-100" alt="slide">
+                            </a>
                         </div>
                         <?php foreach ($next as $articleTrousseMakeUpLevre) { ?>
                             <div class="item">
-                                <?php
-                                    echo '<img class="image3 width-100" src="images/'.$articleTrousseMakeUpLevre['file_article_trousse'].'" alt="slide">'; 
-                                ?>
-                                </br>
-                                <a href="index.php?action=articleTrousse&amp;id=<?= $articleTrousseMakeUpLevre['id_article_trousse'] ?>">Voir plus...</a>
+                                <a href="index.php?action=articleTrousse&amp;id=<?=$articleTrousseMakeUpLevre['id_article_trousse']?>">
+                                    <img src="images/<?=$articleTrousseMakeUpLevre['file_article_trousse']?>" class="image3 width-100" alt="slide">
+                                </a>
                             </div>
                         <?php } 
                         $articlesTrousseMakeUpLevre->closeCursor();?>
@@ -237,22 +221,18 @@
                 $reqArticlesTrousseMakeUpTeint=$articlesTrousseMakeUpTeint-> fetchAll();
                 $next = array_slice($reqArticlesTrousseMakeUpTeint, 1);
                 ?>
-                <div id="carouselExampleControls4" class="carousel slide col-xs-6 col-sm-2" data-ride="carousel">
+                <div id="carouselExampleControls4" class="carousel slide col-xs-5 col-sm-2" data-ride="carousel">
                     <div class="carousel-inner">
                         <div class="item active">
-                          <?php
-                              echo '<img class="image3 width-100" src="images/'.$reqArticlesTrousseMakeUpTeint[0]['file_article_trousse'].'" alt="slide">'; 
-                          ?>
-                            </br>
-                            <a href="index.php?action=articleTrousse&amp;id=<?= $reqArticlesTrousseMakeUpTeint[0]['id_article_trousse'] ?>">Voir plus...</a>
+                            <a href="index.php?action=articleTrousse&amp;id=<?=$reqArticlesTrousseMakeUpTeint[0]['id_article_trousse']?>">
+                                <img src="images/<?=$reqArticlesTrousseMakeUpTeint[0]['file_article_trousse']?>" class="image3 width-100" alt="slide">
+                            </a>
                         </div>
                         <?php foreach ($next as $articleTrousseMakeUpTeint) { ?>
                             <div class="item">
-                                <?php
-                                    echo '<img class="image3 width-100" src="images/'.$articleTrousseMakeUpTeint['file_article_trousse'].'" alt="slide">'; 
-                                ?>
-                                </br>
-                                <a href="index.php?action=articleTrousse&amp;id=<?= $articleTrousseMakeUpTeint['id_article_trousse'] ?>">Voir plus...</a>
+                                <a href="index.php?action=articleTrousse&amp;id=<?=$articleTrousseMakeUpTeint['id_article_trousse']?>">
+                                    <img src="images/<?=$articleTrousseMakeUpTeint['file_article_trousse']?>" class="image3 width-100" alt="slide">
+                                </a>
                             </div>
                         <?php } 
                         $articlesTrousseMakeUpTeint->closeCursor();?>
