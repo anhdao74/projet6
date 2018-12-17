@@ -23,7 +23,7 @@ class ConnexionController
     function verifyController()
     {
         $userManager = new ConnexionManager();
-        $user = $userManager->verifModel(strip_tags($_POST['login']), strip_tags($_POST['pass']));
+        $user = $userManager->verifModel(strip_tags($_POST['login']), md5($_POST['pass']));
         
         
         if (!$user)  
