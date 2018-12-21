@@ -15,7 +15,7 @@
         <h1>How she did</h1>
     </header>
     
-    <div class="col-sm-11 container">
+    <div class="col-sm-12 col-xs-12 container">
         <section class="row1">
             <div class="col-sm-12">
                 <?php
@@ -52,7 +52,7 @@
         </section>
     </div>
     
-    <div class="col-sm-12 container">
+    <div class="col-sm-12 col-xs-12 container">
         </br></br>
         <hr>
         </br></br>
@@ -86,18 +86,18 @@
         </section>
     </div>
     </br>
-    <div class="col-sm-12 container">
+    <div class="col-sm-12 col-xs-12 container">
         </br></br>
         <hr>
-        <section class="row1">
+        <section class="row1 col-sm-12 col-xs-12">
             <a class="text-center" href="index.php?action=articlesTrousse&amp"><h3>Ma trousse</h3></a>
             </br></br>
-            <div class="col-sm-12 class_carousell">
+            <div class="col-sm-12 col-xs-12 class_carousell">
                 <?php
                 $reqArticlesTrousseSoinVisage=$articlesTrousseSoinVisage-> fetchAll();
                 $next = array_slice($reqArticlesTrousseSoinVisage, 1);
                 ?>
-                <div id="carouselExampleControls" class="carousel1 slide col-xs-5 col-sm-2" data-ride="carousel">
+                <div id="carouselExampleControls" class="carousel1 slide col-xs-6 col-sm-2" data-ride="carousel">
                     <div class="carousel-inner">
                         <div class="item active">
                             <a href="index.php?action=articleTrousse&amp;id=<?=$reqArticlesTrousseSoinVisage[0]['id_article_trousse']?>">
@@ -128,7 +128,7 @@
                 $reqArticlesTrousseSoinCorp=$articlesTrousseSoinCorp-> fetchAll();
                 $next = array_slice($reqArticlesTrousseSoinCorp, 1);
                 ?>
-                <div id="carouselExampleControls1" class="carousel slide col-xs-5 col-sm-2" data-ride="carousel">
+                <div id="carouselExampleControls1" class="carousel slide col-xs-6 col-sm-2" data-ride="carousel">
                     <div class="carousel-inner">
                         <div class="item active">
                             <a href="index.php?action=articleTrousse&amp;id=<?=$reqArticlesTrousseSoinCorp[0]['id_article_trousse']?>">
@@ -159,7 +159,7 @@
                 $reqArticlesTrousseMakeUpYeux=$articlesTrousseMakeUpYeux-> fetchAll();
                 $next = array_slice($reqArticlesTrousseMakeUpYeux, 1);
                 ?>
-                <div id="carouselExampleControls2" class="carousel slide col-xs-5 col-sm-2" data-ride="carousel">
+                <div id="carouselExampleControls2" class="carousel slide col-xs-6 col-sm-2" data-ride="carousel">
                     <div class="carousel-inner">
                         <div class="item active">
                             <a href="index.php?action=articleTrousse&amp;id=<?=$reqArticlesTrousseMakeUpYeux[0]['id_article_trousse']?>">
@@ -190,7 +190,7 @@
                 $reqArticlesTrousseMakeUpLevre=$articlesTrousseMakeUpLevre-> fetchAll();
                 $next = array_slice($reqArticlesTrousseMakeUpLevre, 1);
                 ?>
-                <div id="carouselExampleControls3" class="carousel slide col-xs-5 col-sm-2" data-ride="carousel">
+                <div id="carouselExampleControls3" class="carousel slide col-xs-6 col-sm-2" data-ride="carousel">
                     <div class="carousel-inner">
                         <div class="item active">
                             <a href="index.php?action=articleTrousse&amp;id=<?=$reqArticlesTrousseMakeUpLevre[0]['id_article_trousse']?>">
@@ -221,7 +221,7 @@
                 $reqArticlesTrousseMakeUpTeint=$articlesTrousseMakeUpTeint-> fetchAll();
                 $next = array_slice($reqArticlesTrousseMakeUpTeint, 1);
                 ?>
-                <div id="carouselExampleControls4" class="carousel slide col-xs-5 col-sm-2" data-ride="carousel">
+                <div id="carouselExampleControls4" class="carousel slide col-xs-6 col-sm-2" data-ride="carousel">
                     <div class="carousel-inner">
                         <div class="item active">
                             <a href="index.php?action=articleTrousse&amp;id=<?=$reqArticlesTrousseMakeUpTeint[0]['id_article_trousse']?>">

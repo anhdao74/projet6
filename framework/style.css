@@ -133,7 +133,6 @@ img:hover {
 
 .image{
     height: 650px;
-    width: 550px;
 }
 
 .image1{
@@ -501,8 +500,16 @@ body
 }
     
 @media screen and (max-width: 940px) {
+	.image{
+	    margin:auto;
+	    width: auto;
+	   	padding-right: 0; 
+       	padding-left: 0;
+        max-width: 450px;
+        max-height: 400px;
+    }
     .image4 {
-        top:350px;
+        top:150px;
         left:50px;
         height: 200px;
     }
@@ -540,9 +547,17 @@ body
     }
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 810px) {
+    .image{
+	    margin:auto;
+	    width: auto;
+	   	padding-right: 0; 
+       	padding-left: 0;
+        max-width: 300px;
+        max-height: 400px;
+    }
     .image4 {
-        top:400px;
+        top:200px;
         left:50px;
         height: 200px;
     }
@@ -577,21 +592,23 @@ body
 	}
 
     .image{
-        max-height: 550px;
 	    margin:auto;
 	    width: auto;
 	   	padding-right: 0; 
        	padding-left: 0;
-        max-width: 450px;
+        max-width: 300px;
+        max-height: 400px;
     }
     .image4 {
-       display:none;
+    	max-height: 180px;
+    	top:210px;
+        left:15px;
     }
     .image2 {
        display:none;
     }
     .image1 {
-        width: 450px;
+        max-width: 450px;
     }
     .image3 {
         height: 120px;
@@ -608,11 +625,11 @@ body
     .carousel1 {
     	margin-left:0px;
         margin-right: 5px;
-        width:45%;
+        width:48%;
     }
     .carousel {
         margin-right: 5px;
-        width:45%;
+        width:48%;
         height:150px;
     }
     .vl {
@@ -661,7 +678,7 @@ body
     }
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 630px) {
 	h1 {
 	  width :90%;
 	  margin:auto;
@@ -680,15 +697,16 @@ body
 	}
 
     .image{
-	    max-height: 350px;
+	    max-height: 280px;
 	    margin:auto;
 	    width: auto;
 	   	padding-right: 0; 
        	padding-left: 0;
-        max-width: 280px;
 	}
     .image4 {
-       display:none;
+    	max-height: 110px;
+    	top:140px;
+        left:15px;
     }
     .image2 {
        display:none;
@@ -710,12 +728,11 @@ body
     }
     .carousel1 {
         margin-right: 5px;
-        width:45%;
+        height:200px;
     }
     .carousel {
         margin-right: 5px;
-        width:45%;
-        height:150px;
+        height:200px;
     }
     .vl {
        display:none; 
@@ -760,6 +777,37 @@ body
     }
     .collapse {
         display: block;
+    }
+    @media screen and (max-width: 428px) {
+		h1 {
+		  width :90%;
+		  margin:auto;
+		  text-align: center;  
+		  color:black;
+		  font-size: 50px;
+		  font-family: Apple Chancery, cursive;
+		}
+
+		h2 {
+		  display: none;
+		}
+
+		hr {
+		  display: none;
+		}
+
+	    .image{
+		    max-height: 180px;
+		    margin:auto;
+		    width: auto;
+		   	padding-right: 0; 
+	       	padding-left: 0;
+		}
+	    .image4 {
+	    	max-height: 80px;
+	    	top:80px;
+	        left:15px;
+	    }
     }
     
 }
